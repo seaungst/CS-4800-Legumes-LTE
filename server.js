@@ -4,6 +4,7 @@
 // we've started you off with Express (https://expressjs.com/)
 // but feel free to use whatever libraries or frameworks you'd like through `package.json`.
 const express = require("express");
+const mongoose = require("mongoose");
 const app = express();
 
 // our default array of dreams
