@@ -1,0 +1,51 @@
+body {
+    background-color: #DAE1FC;
+    width: 100%;
+}
+
+#header {
+    background-color: #6683D1;
+    padding: 20px;
+    color: #F0F3FE;
+    padding-left: 40px;
+    width: 100%;
+}
+
+.database-tables {
+    padding: 40px;
+}
+
+th {
+    background-color: #86A3F4;
+    border-color: #33559B;
+    color: #F0F3FE;
+}
+
+td {
+    background-color: #C2CEFA;
+    border-color: #33559B;
+    color: #33559B;
+}
+
+.subheader {
+    color: #33559B;
+    font-size: 24px;
+    font-weight:bold;
+    padding: 10px;
+    padding-left: 0px;
+}
+
+.btn {
+    margin-left: 10px;
+    background-color: #F0F3FE;
+    color: #33559B;
+}
+
+.btn:hover {
+    background-color: #ABBCF7;
+}
+
+.btn:active{
+    background-color: #86A3F4;
+    color: #F0F3FE;
+}
