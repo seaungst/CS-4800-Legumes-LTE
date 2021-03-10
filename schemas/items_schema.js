@@ -1,4 +1,4 @@
-// testing to see if i can pull from the Customer collection
+const mongoose = require("mongoose");
 
 // building the schema
 const ItemsSchema = new mongoose.Schema({
@@ -13,10 +13,4 @@ const ItemsSchema = new mongoose.Schema({
 
 });
 // instantiating the model from the schema; instead of storing it in a variable, we will be using the module.exports function in js to make it available to all the other javascript programs (see code structure above)
-const Item = mongoose.model('Items', ItemsSchema, 'Items');
-
-// executing the query
-console.log("finding items");
-Item.find({}, function (err, items) {
-    console.log(items);
-});
+module.exports = mongoose.model('Items', ItemsSchema, 'Items');
