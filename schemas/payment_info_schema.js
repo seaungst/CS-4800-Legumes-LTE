@@ -2,7 +2,7 @@
 // building the schema
 const PaymentInfoSchema = new mongoose.Schema({
     CustomerID: { type: Number },
-    Zip_Code: { type: String },
+    Zip_Code: { type: Number },
     Card_Num: { type: Number },
     CVV: { type: Number },
     Exp_Date: { type: String },
