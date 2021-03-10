@@ -6,7 +6,7 @@ const CustomerAddressSchema = new mongoose.Schema({
     Street: { type: String },
     City: { type: String },
     State: { type: String },
-    Zip_Code: { type: String },
+    Zip_Code: { type: Number },
     Is_Shipping: { type: Boolean },
     Is_Billing: { type: Boolean }
 });
