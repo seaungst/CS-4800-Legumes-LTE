@@ -10,6 +10,11 @@ const app = express();
 // connecting to the chickpea database
 mongoose.connect("mongodb+srv://<username>:<password>@chickpeacluster.ol3yz.mongodb.net/Chickpea?retryWrites=true&w=majority", { useNewUrlParser: true });
 
+// https://expressjs.com/en/starter/basic-routing.html
+app.get("/", (request, response) => {
+  response.sendFile(__dirname + "/views/index.html");
+});
+
 /*
  * this section is reserved for the routers
  */
@@ -21,10 +26,6 @@ app.use("/dump", DumpRouter);
 app.use(express.static("public"));
 
 // listen for requests :)
-  const listener = app.listen(3000, () => {
-  console.log("Your app is listening on port " + 3000);
+const listener = app.listen(process.env.PORT, () => {
+  console.log("Your app is listening on port " + listener.address().port);
 });
-
-app.get("/", (request, response) => {
-    response.sendFile(__dirname + "/views/index.html");
-  });
