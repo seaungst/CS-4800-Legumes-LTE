@@ -201,17 +201,21 @@
           <th>Special Details</th>
         </tr>
         <!-- please replace this with for loop like in customer table -->
-        <tr>
-          <td>Item ID</td>
-          <td>Store ID</td>
-          <td>Item Name</td>
-          <td>Category</td>
-          <td>Sub-Category</td>
-          <td>IsBrand</td>
-          <td>Price</td>
-          <td>Stock</td>
-          <td>Special Details</td>
-        </tr>
+        <% if(locals.item) {%>
+          <% for(var i = 0; i < item.length; i++) {%>
+              <tr>
+                  <td><%= item[i].Item ID< %></td>
+                  <td><%= item[i].Store ID %></td>
+                  <td><%= item[i].Item Name %></td>
+                  <td><%= item[i].Category %></td>
+                  <td><%= item[i].Sub-Category %></td>
+                  <td><%= item[i].IsBrand %></td>
+                  <td><%= item[i].Price %></td>
+                  <td><%= item[i].Stock %></td>
+                  <td><%= item[i].Special Details %></td>
+              </tr>
+          <% } %>
+      <% } %>
       </table>
 
       <div class="subheader">
