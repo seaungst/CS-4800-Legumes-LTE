@@ -18,7 +18,7 @@
         
         <div class="subheader">
             Customer
-            <button id="customer-button" class="btn">Import Data</button>
+            <button id="customer-button" class="btn" type="submit">Import Data</button>
         </div>
         <table id="Customer" class="table" border="1" >
             <tr>
@@ -28,13 +28,18 @@
                 <th>Hashed Password</th>
                 <th>Name</th>
             </tr>
-            <tr>
-                <td>Customer ID</td>
-                <td>Username</td>
-                <td>Email</td>
-                <td>Hashed Password</td>
-                <td>Name</td>
-            </tr>
+            <!-- please reference for other tables -->
+            <% if(locals.cust) {%>
+                <% for(var i = 0; i < cust.length; i++) {%>
+                    <tr>
+                        <td><%= cust[i].CustomerID %></td>
+                        <td><%= cust[i].Username %></td>
+                        <td><%= cust[i].Email %></td>
+                        <td><%= cust[i].Hashed_Password %></td>
+                        <td><%= cust[i].Name %></td>
+                    </tr>
+                <% } %>
+            <% } %>
         </table>
         
         <div class="subheader">
@@ -50,6 +55,7 @@
                 <th>Address ID</th>
                 <th>Name on Card</th>
             </tr>
+            <!-- please replace this with for loop like in customer table -->
             <tr>
                 <td>Customer ID</td>
                 <td>Card Number</td>
@@ -76,6 +82,7 @@
                 <th>IsShipping</th>
                 <th>IsBilling</th>
             </tr>
+            <!-- please replace this with for loop like in customer table -->
             <tr>
                 <td>Address ID</td>
                 <td>Customer ID</td>
@@ -103,6 +110,7 @@
                 <th>Delivery Instructions</th>
                 <th>Purchased Items</th>
             </tr>
+            <!-- please replace this with for loop like in customer table -->
             <tr>
                 <td>Delivery ID</td>
                 <td>Customer ID</td>
@@ -124,6 +132,7 @@
                 <th>Customer ID</th>
                 <th>Favorite Items</th>
             </tr>
+            <!-- please replace this with for loop like in customer table -->
              <tr>
                 <td>Customer ID</td>
                 <td>Favorite Items</td>
@@ -147,6 +156,7 @@
                 <th>Number of Deliveries</th>
                 <th>Availability Status</th>
             </tr>
+            <!-- please replace this with for loop like in customer table -->
             <tr>
                 <td>Handler ID</td>
                 <td>Name</td>
@@ -177,6 +187,7 @@
                 <th>Stock</th>
                 <th>Special Details</th>
             </tr>
+            <!-- please replace this with for loop like in customer table -->
             <tr>
                 <td>Item ID</td>
                 <td>Store ID</td>
@@ -192,7 +203,7 @@
         
         <div class="subheader">
             Stores
-            <button id="stores-button" class="btn">Import Data</button>
+            <button id="stores-button" class="btn" type="submit">Import Data</button>
         </div>
         <table id="Store" class="table" border="1" >
             <tr>
@@ -204,15 +215,19 @@
                 <th>Store Name</th>
                 <th>Store Info</th>
             </tr>
-            <tr>
-                <td>Store ID</td>
-                <td>Street</td>
-                <td>City</td>
-                <td>State</td>
-                <td>Zip Code</td>
-                <td>Store Name</td>
-                <td>Store Info</td>
-            </tr>
+            <% if(locals.store){ %>
+                <% for(var i = 0; i < store.length; i++) {%>
+                    <tr>
+                        <td><%= store[i].Store_ID %></td>
+                        <td><%= store[i].Address_Street %></td>
+                        <td><%= store[i].Address_City %></td>
+                        <td><%= store[i].Address_State %></td>
+                        <td><%= store[i].Address_Zipcode %></td>
+                        <td><%= store[i].Store_Name %></td>
+                        <td><%= store[i].Store_Info %></td>
+                    </tr>
+                <% } %>
+            <% } %>
         </table>
         
     </div>
