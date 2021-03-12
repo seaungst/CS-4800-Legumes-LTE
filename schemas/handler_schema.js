@@ -1,7 +1,7 @@
 ﻿const mongoose = require('mongoose');
 // building the schema
 const HandlerSchema = new mongoose.Schema({
-    HandlerID: { type: Number },
+    Handler_ID: { type: Number },
     Name: { type: String },
     Street: { type: String },
     City: { type: String },

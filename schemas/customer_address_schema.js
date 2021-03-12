@@ -2,7 +2,7 @@
 
 // building the schema
 const CustomerAddressSchema = new mongoose.Schema({
-    AddressID: { type: Number },
+    Address_ID: { type: Number },
     CustomerID: { type: Number },
     Street: { type: String },
     City: { type: String },
