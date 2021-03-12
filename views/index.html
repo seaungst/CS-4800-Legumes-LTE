@@ -4,21 +4,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta charset="utf-8" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href="/style.css" rel="stylesheet" />
+    <link href="../public/style.css" rel="stylesheet" />
     <title>Chickpea Test</title>
 </head>
 <body>
     <div id="header">
         <h1>Chickpea Database Test Page</h1>
     </div>
-    <form action="/dump" method="get">
-        <button id="customer-button" class="btn" type="submit">Import Data</button>
-    </form>
+    
+    <div id="import">
+            <form action="/dump" method="get">
+                <div class="subheader">
+                    Chickpea Database:
+                    <button id="import-button" class="btn" type="submit">Import Data</button>
+                </div>
+            </form>
+    </div>
+    
     <div class="database-tables">
         
         <div class="subheader">
             Customer
-            <button id="customer-button" class="btn">Import Data</button>
         </div>
         <table id="Customer" class="table" border="1" >
             <tr>
@@ -39,7 +45,6 @@
         
         <div class="subheader">
             Payment Info
-            <button id="payment-info-button" class="btn">Import Data</button>
         </div>
         <table id="Payment Info" class="table" border="1" >
             <tr>
@@ -63,7 +68,6 @@
         
         <div class="subheader">
             Customer Address
-            <button id="customer-address-button" class="btn">Import Data</button>
         </div>
         <table id="Customer Address" class="table" border="1" >
             <tr>
@@ -90,7 +94,6 @@
         
         <div class="subheader">
             Delivery
-            <button id="delivery-button" class="btn">Import Data</button>
         </div>
         <table id="Delivery" class="table" border="1" >
             <tr>
@@ -117,7 +120,6 @@
         
         <div class="subheader">
             Favorites
-            <button id="favorites-button" class="btn">Import Data</button>
         </div>
         <table id="Favorites" class="table" border="1" >
             <tr>
@@ -132,7 +134,6 @@
         
         <div class="subheader">
             Handler
-            <button id="handler-button" class="btn">Import Data</button>
         </div>
         <table id="Handler" class="table" border="1" >
             <tr>
@@ -163,7 +164,6 @@
         
         <div class="subheader">
             Items
-            <button id="items-button" class="btn">Import Data</button>
         </div>
         <table id="Items" class="table" border="1" >
             <tr>
@@ -192,7 +192,6 @@
         
         <div class="subheader">
             Stores
-            <button id="stores-button" class="btn">Import Data</button>
         </div>
         <table id="Store" class="table" border="1" >
             <tr>
