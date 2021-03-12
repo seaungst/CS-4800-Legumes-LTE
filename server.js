@@ -8,7 +8,7 @@ const mongoose = require("mongoose");
 const app = express();
 
 // connecting to the chickpea database
-mongoose.connect("mongodb+srv://<username>:<password>@chickpeacluster.ol3yz.mongodb.net/Chickpea?retryWrites=true&w=majority", { useNewUrlParser: true });
+mongoose.connect("mongodb+srv://Rybean:" + process.env.rybean_pw + "@chickpeacluster.ol3yz.mongodb.net/Chickpea?retryWrites=true&w=majority", { useNewUrlParser: true });
 
 // https://expressjs.com/en/starter/basic-routing.html
 app.get("/", (request, response) => {

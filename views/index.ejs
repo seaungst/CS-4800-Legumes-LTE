@@ -27,9 +27,6 @@
     <div class="database-tables">
       <div class="subheader">
         Customer
-        <button id="customer-button" class="btn" type="submit">
-          Import Data
-        </button>
       </div>
       <table id="Customer" class="table" border="1">
         <tr>
@@ -53,14 +50,13 @@
 
       <div class="subheader">
         Payment Info
-        <button id="payment-info-button" class="btn">Import Data</button>
       </div>
       <table id="Payment Info" class="table" border="1">
         <tr>
           <th>Customer ID</th>
           <th>Card Number</th>
           <th>CVV</th>
-          <th>Experation Date</th>
+          <th>Expiration Date</th>
           <th>Zip Code</th>
           <th>Name on Card</th>
           <th>Billing Address ID</th>
@@ -71,8 +67,8 @@
             <td><%= payment[i].CustomerID %></td>
             <td><%= payment[i].Card_Num %></td>
             <td><%= payment[i].CVV %></td>
-            <td><%= payment[i].Zip_Code %></td>
             <td><%= payment[i].Exp_Date %></td>
+            <td><%= payment[i].Zip_Code %></td>
             <td><%= payment[i].Card_Name %></td>
             <td><%= payment[i].Billing_Address_ID %></td>
           </tr>
@@ -81,7 +77,6 @@
 
       <div class="subheader">
         Customer Address
-        <button id="customer-address-button" class="btn">Import Data</button>
       </div>
       <table id="Customer Address" class="table" border="1">
         <tr>
@@ -95,7 +90,7 @@
           <th>IsBilling</th>
         </tr>
         <!-- please replace this with for loop like in customer table -->
-        <% if(addr.cust) {%> <% for(var i = 0; i < addr.length; i++) {%>
+        <% if(locals.addr) {%> <% for(var i = 0; i < addr.length; i++) {%>
           <tr>
             <td><%= addr[i].Address_ID %></td>
             <td><%= addr[i].CustomerID %></td>
@@ -111,7 +106,6 @@
 
       <div class="subheader">
         Delivery
-        <button id="delivery-button" class="btn">Import Data</button>
       </div>
       <table id="Delivery" class="table" border="1">
         <tr>
@@ -125,24 +119,22 @@
           <th>Purchased Items</th>
         </tr>
 
-        <% if(locals.delivery) {%> <% for(var i = 0; i < delivery.length; i++)
-        {%>
+        <% if(locals.delivery) {%> <% for(var i = 0; i < delivery.length; i++){%>
         <tr>
-          <td><%= delivery[i].DeliveryID %></td>
+          <td><%= delivery[i].Delivery_ID %></td>
           <td><%= delivery[i].CustomerID %></td>
-          <td><%= delivery[i].HandlerID %></td>
-          <td><%= delivery[i].AddressID %></td>
-          <td><%= delivery[i].DateTime %></td>
-          <td><%= delivery[i].Total %></td>
-          <td><%= delivery[i].DeliveryInstructions %></td>
-          <td><%= delivery[i].PurchasedItems %></td>
+          <td><%= delivery[i].Handler_ID %></td>
+          <td><%= delivery[i].DeliveryAddressID %></td>
+          <td><%= delivery[i].Date %></td>
+          <td><%= delivery[i].Total_Cost %></td>
+          <td><%= delivery[i].Delivery_Instructions %></td>
+          <td><%= delivery[i].Purchased_Items %></td>
         </tr>
         <% } %> <% } %>
       </table>
 
       <div class="subheader">
         Favorites
-        <button id="favorites-button" class="btn">Import Data</button>
       </div>
       <table id="Favorites" class="table" border="1">
         <tr>
@@ -153,14 +145,13 @@
         <% if(locals.fav) {%> <% for(var i = 0; i < fav.length; i++) {%>
         <tr>
           <td><%= fav[i].CustomerID %></td>
-          <td><%= fav[i].FavoriteItems %></td>
+          <td><%= fav[i].Favorite_Items %></td>
         </tr>
         <% } %> <% } %>
       </table>
 
       <div class="subheader">
         Handler
-        <button id="handler-button" class="btn">Import Data</button>
       </div>
       <table id="Handler" class="table" border="1">
         <tr>
@@ -194,7 +185,6 @@
 
       <div class="subheader">
         Items
-        <button id="items-button" class="btn">Import Data</button>
       </div>
       <table id="Items" class="table" border="1">
         <tr>
@@ -205,22 +195,20 @@
           <th>Sub-Category</th>
           <th>IsBrand</th>
           <th>Price</th>
-          <th>Stock</th>
           <th>Special Details</th>
         </tr>
         <!-- please replace this with for loop like in customer table -->
         <% if(locals.item) {%>
           <% for(var i = 0; i < item.length; i++) {%>
               <tr>
-                  <td><%= item[i].Item ID< %></td>
-                  <td><%= item[i].Store ID %></td>
-                  <td><%= item[i].Item Name %></td>
+                  <td><%= item[i].Item_ID %></td>
+                  <td><%= item[i].Store_ID %></td>
+                  <td><%= item[i].Item_Name %></td>
                   <td><%= item[i].Category %></td>
-                  <td><%= item[i].Sub-Category %></td>
-                  <td><%= item[i].IsBrand %></td>
+                  <td><%= item[i].Subcategory %></td>
+                  <td><%= item[i].Brand_Type %></td>
                   <td><%= item[i].Price %></td>
-                  <td><%= item[i].Stock %></td>
-                  <td><%= item[i].Special Details %></td>
+                  <td><%= item[i].Special %></td>
               </tr>
           <% } %>
       <% } %>
@@ -228,9 +216,6 @@
 
       <div class="subheader">
         Stores
-        <button id="stores-button" class="btn" type="submit">
-          Import Data
-        </button>
       </div>
       <table id="Store" class="table" border="1">
         <tr>

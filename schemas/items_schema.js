@@ -2,7 +2,8 @@ const mongoose = require("mongoose");
 
 // building the schema
 const ItemsSchema = new mongoose.Schema({
-    ItemID: { type: Number },
+    Item_ID: { type: Number },
+    Store_ID: { type: Number },
     Item_Name: { type: String },
     Brand_Type: {type: Boolean},
     Price: { type: Number },

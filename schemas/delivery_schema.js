@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
 const DeliverySchema = new mongoose.Schema({
-    DeliveryID: { type: Number },
+    Delivery_ID: { type: Number },
     CustomerID: { type: Number },
-    HandlerID: { type: Number},
+    Handler_ID: { type: Number},
     DeliveryAddressID: { type: Number },
     Date: { type: Date },
     Total_Cost: { type: Number },
