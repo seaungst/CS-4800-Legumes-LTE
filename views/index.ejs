@@ -176,18 +176,20 @@
           <th>Availability Status</th>
         </tr>
         <!-- please replace this with for loop like in customer table -->
-        <tr>
-          <td>Handler ID</td>
-          <td>Name</td>
-          <td>Street</td>
-          <td>City</td>
-          <td>State</td>
-          <td>Zip Code</td>
-          <td>Number of Reviews</td>
-          <td>Review Score/Total</td>
-          <td>Number of Deliveries</td>
-          <td>Availability Status</td>
-        </tr>
+        <% if(locals.handler) {%> <% for(var i = 0; i < handler.length; i++) {%>
+          <tr>
+            <td><%= handler[i].Handler_ID %></td>
+            <td><%= handler[i].Name %></td>
+            <td><%= handler[i].Street %></td>
+            <td><%= handler[i].City %></td>
+            <td><%= handler[i].State %></td>
+            <td><%= handler[i].Zip_Code %></td>
+            <td><%= handler[i].Num_Reviews %></td>
+            <td><%= handler[i].Review_Score %></td>
+            <td><%= handler[i].Num_Deliveries %></td>
+            <td><%= handler[i].Availability %></td>
+          </tr>
+          <% } %> <% } %>
       </table>
 
       <div class="subheader">
