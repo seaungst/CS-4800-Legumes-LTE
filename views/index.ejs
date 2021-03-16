@@ -188,6 +188,7 @@
           <th>IsBrand</th>
           <th>Price</th>
           <th>Special Details</th>
+          <th>Stock</th>
         </tr>
         <!-- please replace this with for loop like in customer table -->
         <% if(locals.item) {%> <% for(var i = 0; i < item.length; i++) {%>
@@ -200,6 +201,7 @@
           <td><%= item[i].Brand_Type %></td>
           <td><%= item[i].Price %></td>
           <td><%= item[i].Special %></td>
+          <td><%= item[i].Stock %></td>
         </tr>
         <% } %> <% } %>
       </table>
