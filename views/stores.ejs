@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="/style.css" rel="stylesheet" />
+    <title>Chickpea Stores Test</title>
+</head>
+<body>
+    <div id="header">
+        <h1>Stores</h1>
+    </div>
+    <div class="list-group">
+        <% for(var i = 0; i < store.length; i++) { %>
+            <form action="/stores/detail" method="post">
+                <button type="submit" class="list-group-item list-group-item-action" name="store_name" value="<%= store[i].Store_Name %>">
+                    <%= store[i].Store_Name %><br>
+                    <b>Rating: </b> <%= store[i].Rating %>
+                    <input type="hidden" name="store_id" value="<%= store[i].Store_ID %>" />
+                </button>
+            </form>
+        <% } %>
+        </div>
+</body>
