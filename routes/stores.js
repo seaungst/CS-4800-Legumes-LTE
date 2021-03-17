@@ -28,8 +28,27 @@ function renderStores(req, res){
     res.render("stores.ejs");
 };
 
+/* /detail route
+ * This route is responsible for grabbing the items associated with the requested store and
+ * organizing them based on their primary categories. The result is made available to EJS
+ * for rendering.
+ * 
+ * res.locals.items is a collection of item arrays that are organized by their category
+ *      e.g.: res.locals.items["Pantry"] = [item_object_1, item_object_2, ...] 
+ *            res.locals.items["Meat & Seafood"] = [item_object_3, item_object_4, ...] 
+ */
 router.post('/detail', (req, res)=>{
-    res.send("we got that, you want details for " + req.body.store_name + " which has a store ID of " + req.body.store_id);
+    Item.find({Store_ID: req.body.store_id}, (err, items)=>{
+        res.locals.items = [];
+        for(var i of items){
+            if(!(res.locals.items[i.Category])){
+                res.locals.items[i.Category] = [];
+            }
+            res.locals.items[i.Category].push(i);
+        }
+        console.log(res.locals.items);
+        res.send("currently sorting the list");
+    })
 });
 
 module.exports = router;
