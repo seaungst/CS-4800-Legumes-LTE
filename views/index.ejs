@@ -216,6 +216,10 @@
           <th>Zip Code</th>
           <th>Store Name</th>
           <th>Store Info</th>
+          <th>Rating</th>
+          <th>Splash image/th>
+          <th>Store Owner Image</th>
+          <th>Store History</th>
         </tr>
         <% if(locals.store){ %> <% for(var i = 0; i < store.length; i++) {%>
         <tr>
@@ -226,6 +230,10 @@
           <td><%= store[i].Address_Zipcode %></td>
           <td><%= store[i].Store_Name %></td>
           <td><%= store[i].Store_Info %></td>
+          <td><%= store[i].Rating %></td>
+          <td><%= store[i].Splash_Image %></td>
+          <td><%= store[i].Owner_Image %></td>
+          <td><%= store[i].Store_History %></td>
         </tr>
         <% } %> <% } %>
       </table>
