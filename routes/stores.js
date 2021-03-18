@@ -37,18 +37,24 @@ function renderStores(req, res){
  *      e.g.: res.locals.items["Pantry"] = [item_object_1, item_object_2, ...] 
  *            res.locals.items["Meat & Seafood"] = [item_object_3, item_object_4, ...] 
  */
-router.post('/detail', (req, res)=>{
-    Item.find({Store_ID: req.body.store_id}, (err, items)=>{
-        res.locals.items = [];
+router.post('/detail', getStoreItems, renderStoreView);
+
+function getStoreItems(req, res, next){
+    Item.find({Store_ID: req.body.store_id}, function(err, items){
+        res.locals.items = {};
         for(var i of items){
             if(!(res.locals.items[i.Category])){
                 res.locals.items[i.Category] = [];
             }
             res.locals.items[i.Category].push(i);
         }
-        console.log(res.locals.items);
-        res.send("currently sorting the list");
-    })
-});
+        console.log(Object.keys(res.locals.items));
+        next();
+    });
+}
+
+function renderStoreView(req, res){
+    res.render("storeview_render_test.ejs");
+}
 
 module.exports = router;
