@@ -8,7 +8,7 @@ const mongoose = require("mongoose");
 const app = express();
 
 // connecting to the chickpea database
-mongoose.connect("mongodb+srv://Rybean:" + process.env.rybean_pw + "@chickpeacluster.ol3yz.mongodb.net/Chickpea?retryWrites=true&w=majority", { useNewUrlParser: true });
+mongoose.connect("mongodb+srv://Rybean:<password>@chickpeacluster.ol3yz.mongodb.net/Chickpea?retryWrites=true&w=majority", { useNewUrlParser: true });
 
 // https://expressjs.com/en/starter/basic-routing.html
 app.get("/", (request, response) => {
@@ -28,6 +28,6 @@ app.use("/stores", StoreRouter);
 app.use(express.static("public"));
 
 // listen for requests :)
-const listener = app.listen(process.env.PORT, () => {
-  console.log("Your app is listening on port " + listener.address().port);
+const listener = app.listen(3000, () => {
+  console.log("Your app is listening locally");
 });
