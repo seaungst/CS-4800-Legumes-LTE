@@ -1,0 +1,154 @@
+:root {
+    --purple1: #f0f0fa;
+    --purple2: #c8c8fd;
+    --purple3: #9fa0ff;
+    --purple4: #7a76d4;
+    --purple5: #554ca9;
+    --purple6: #242038;
+    --yellow1: #f8eac9;
+    --yellow2: #f0d493;
+    --yellow3: #e8b84a;
+    --yellow4: #c7931a;
+    --yellow5: #967322;
+}
+
+body {
+    background-color: var(--purple1);
+    width: 100%;
+    position: relative;
+}
+
+.navbar-custom {
+    background-color: var(--purple2);
+}
+
+.navbar-custom a {
+    color: var(--purple5);
+}
+
+.navbar-custom a:hover{
+    color: var(--purple);
+}
+
+ul.nav-pills {
+    top: 10%;
+    position: fixed;
+}
+
+.nav-pills .pill .nav-link:not(.active) {
+    background-color: var(--purple5);
+    color: var(--yellow1);
+}
+
+.nav-pills .pill .nav-link {
+    background-color: var(--yellow1);
+    color: var(--purple5);
+}
+
+.rating {
+    position: relative;
+    display: flex;
+    flex-direction: row-reverse;
+    right: 40px;
+}
+
+.rating>input {
+    display: none;
+}
+
+.rating>label {
+    position: relative;
+    width: 1em;
+    font-size: 25px;
+    color: var(--yellow1);
+    cursor: pointer;
+}
+
+.rating>label::before {
+    content: "\2605";
+    position: absolute;
+    opacity: 0;
+}
+
+.rating>label:hover:before,
+.rating>label:hover~label:before {
+    opacity: 1 !important;
+}
+
+.rating>input:checked~label:before {
+    opacity: 1
+}
+
+.rating:hover>input:checked~label:before {
+    opacity: 0.4
+}
+
+.btn {
+    background-color: var(--yellow1);
+    color: var(--yellow5);
+}
+
+.btn:hover {
+    background-color: var(--yellow2);
+}
+
+.btn:active{
+    background-color: var(--yellow3);
+    color: var(--yellow1);
+}
+
+#backsplash {
+    height: 30%;
+    width: 100%;
+    position: fixed;
+}
+
+#page-bottom {
+    background-color: var(--yellow1);
+    padding: 20px;
+    color: var(--purple4);
+}
+
+.col-sm-3 {
+    background-color: var(--purple5);
+    color: var(--purple1);
+}
+
+div.col-8 div {
+    height: auto;
+}
+
+div.col-sm-9 div {
+    position: relative;
+    z-index: -1;
+    padding-bottom: 100px;
+}
+
+#pantry {
+    margin-top: 220px;
+}
+
+.card-img-top {
+
+    justify-content: center;
+}
+
+.card-deck {
+    margin: 0px !important;
+    padding: 0px !important;
+}
+
+.card-footer {
+    margin: 0px !important;
+    padding: 0px !important;
+}
+
+.card-body {
+    margin: 0px !important;
+    padding: 0px !important;
+}
+
+.card {
+    margin: 10px !important;
+    padding: 10px !important;
+}

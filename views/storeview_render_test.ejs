@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<body>
+    <ul>
+        <%for (var i in items) {%>
+            <li>
+                <h2><%= i %></h2>
+                <% for (var j = 0; j < items[i].length; j++) { %>
+                    <ul>
+                        <li>
+                            <img src="<%= items[i][j].Image_URL %>" width="300" height="300"><br>
+                            <%= items[i][j].Item_Name %><br>
+                            Price: <%= items[i][j].Price %><br>
+                            Stock: <%= items[i][j].Stock %><br>
+                        </li>
+                    </ul>
+                <% } %>
+            </li>
+        <%}%>
+    </ul>
+</body>

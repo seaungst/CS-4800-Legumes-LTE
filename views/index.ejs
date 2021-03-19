@@ -19,15 +19,18 @@
     <div id="header">
       <h1>Chickpea Database Test Page</h1>
     </div>
-    <form action="/dump" method="get">
-      <button id="customer-button" class="btn" type="submit">
-        Import Data
-      </button>
-    </form>
+    <div id="import">
+      <form action="/dump" method="get">
+        <div class="subheader">
+          Chickpea Database:
+          <button id="import-button" class="btn" type="submit">
+            Import Data
+          </button>
+        </div>
+      </form>
+    </div>
     <div class="database-tables">
-      <div class="subheader">
-        Customer
-      </div>
+      <div class="subheader">Customer</div>
       <table id="Customer" class="table" border="1">
         <tr>
           <th>Customer ID</th>
@@ -48,9 +51,7 @@
         <% } %> <% } %>
       </table>
 
-      <div class="subheader">
-        Payment Info
-      </div>
+      <div class="subheader">Payment Info</div>
       <table id="Payment Info" class="table" border="1">
         <tr>
           <th>Customer ID</th>
@@ -63,21 +64,19 @@
         </tr>
         <!-- please replace this with for loop like in customer table -->
         <% if(locals.payment) {%> <% for(var i = 0; i < payment.length; i++) {%>
-          <tr>
-            <td><%= payment[i].CustomerID %></td>
-            <td><%= payment[i].Card_Num %></td>
-            <td><%= payment[i].CVV %></td>
-            <td><%= payment[i].Exp_Date %></td>
-            <td><%= payment[i].Zip_Code %></td>
-            <td><%= payment[i].Card_Name %></td>
-            <td><%= payment[i].Billing_Address_ID %></td>
-          </tr>
-          <% } %> <% } %>
+        <tr>
+          <td><%= payment[i].CustomerID %></td>
+          <td><%= payment[i].Card_Num %></td>
+          <td><%= payment[i].CVV %></td>
+          <td><%= payment[i].Exp_Date %></td>
+          <td><%= payment[i].Zip_Code %></td>
+          <td><%= payment[i].Card_Name %></td>
+          <td><%= payment[i].Billing_Address_ID %></td>
+        </tr>
+        <% } %> <% } %>
       </table>
 
-      <div class="subheader">
-        Customer Address
-      </div>
+      <div class="subheader">Customer Address</div>
       <table id="Customer Address" class="table" border="1">
         <tr>
           <th>Address ID</th>
@@ -91,22 +90,20 @@
         </tr>
         <!-- please replace this with for loop like in customer table -->
         <% if(locals.addr) {%> <% for(var i = 0; i < addr.length; i++) {%>
-          <tr>
-            <td><%= addr[i].Address_ID %></td>
-            <td><%= addr[i].CustomerID %></td>
-            <td><%= addr[i].Street %></td>
-            <td><%= addr[i].City %></td>
-            <td><%= addr[i].State %></td>
-            <td><%= addr[i].Zip_Code %></td>
-            <td><%= addr[i].Is_Shipping %></td>
-            <td><%= addr[i].Is_Billing %></td>
-          </tr>
-          <% } %> <% } %>
+        <tr>
+          <td><%= addr[i].Address_ID %></td>
+          <td><%= addr[i].CustomerID %></td>
+          <td><%= addr[i].Street %></td>
+          <td><%= addr[i].City %></td>
+          <td><%= addr[i].State %></td>
+          <td><%= addr[i].Zip_Code %></td>
+          <td><%= addr[i].Is_Shipping %></td>
+          <td><%= addr[i].Is_Billing %></td>
+        </tr>
+        <% } %> <% } %>
       </table>
 
-      <div class="subheader">
-        Delivery
-      </div>
+      <div class="subheader">Delivery</div>
       <table id="Delivery" class="table" border="1">
         <tr>
           <th>Delivery ID</th>
@@ -119,7 +116,8 @@
           <th>Purchased Items</th>
         </tr>
 
-        <% if(locals.delivery) {%> <% for(var i = 0; i < delivery.length; i++){%>
+        <% if(locals.delivery) {%> <% for(var i = 0; i < delivery.length;
+        i++){%>
         <tr>
           <td><%= delivery[i].Delivery_ID %></td>
           <td><%= delivery[i].CustomerID %></td>
@@ -133,9 +131,7 @@
         <% } %> <% } %>
       </table>
 
-      <div class="subheader">
-        Favorites
-      </div>
+      <div class="subheader">Favorites</div>
       <table id="Favorites" class="table" border="1">
         <tr>
           <th>Customer ID</th>
@@ -150,9 +146,7 @@
         <% } %> <% } %>
       </table>
 
-      <div class="subheader">
-        Handler
-      </div>
+      <div class="subheader">Handler</div>
       <table id="Handler" class="table" border="1">
         <tr>
           <th>Handler ID</th>
@@ -168,24 +162,22 @@
         </tr>
         <!-- please replace this with for loop like in customer table -->
         <% if(locals.handler) {%> <% for(var i = 0; i < handler.length; i++) {%>
-          <tr>
-            <td><%= handler[i].Handler_ID %></td>
-            <td><%= handler[i].Name %></td>
-            <td><%= handler[i].Street %></td>
-            <td><%= handler[i].City %></td>
-            <td><%= handler[i].State %></td>
-            <td><%= handler[i].Zip_Code %></td>
-            <td><%= handler[i].Num_Reviews %></td>
-            <td><%= handler[i].Review_Score %></td>
-            <td><%= handler[i].Num_Deliveries %></td>
-            <td><%= handler[i].Availability %></td>
-          </tr>
-          <% } %> <% } %>
+        <tr>
+          <td><%= handler[i].Handler_ID %></td>
+          <td><%= handler[i].Name %></td>
+          <td><%= handler[i].Street %></td>
+          <td><%= handler[i].City %></td>
+          <td><%= handler[i].State %></td>
+          <td><%= handler[i].Zip_Code %></td>
+          <td><%= handler[i].Num_Reviews %></td>
+          <td><%= handler[i].Review_Score %></td>
+          <td><%= handler[i].Num_Deliveries %></td>
+          <td><%= handler[i].Availability %></td>
+        </tr>
+        <% } %> <% } %>
       </table>
 
-      <div class="subheader">
-        Items
-      </div>
+      <div class="subheader">Items</div>
       <table id="Items" class="table" border="1">
         <tr>
           <th>Item ID</th>
@@ -196,27 +188,25 @@
           <th>IsBrand</th>
           <th>Price</th>
           <th>Special Details</th>
+          <th>Stock</th>
         </tr>
         <!-- please replace this with for loop like in customer table -->
-        <% if(locals.item) {%>
-          <% for(var i = 0; i < item.length; i++) {%>
-              <tr>
-                  <td><%= item[i].Item_ID %></td>
-                  <td><%= item[i].Store_ID %></td>
-                  <td><%= item[i].Item_Name %></td>
-                  <td><%= item[i].Category %></td>
-                  <td><%= item[i].Subcategory %></td>
-                  <td><%= item[i].Brand_Type %></td>
-                  <td><%= item[i].Price %></td>
-                  <td><%= item[i].Special %></td>
-              </tr>
-          <% } %>
-      <% } %>
+        <% if(locals.item) {%> <% for(var i = 0; i < item.length; i++) {%>
+        <tr>
+          <td><%= item[i].Item_ID %></td>
+          <td><%= item[i].Store_ID %></td>
+          <td><%= item[i].Item_Name %></td>
+          <td><%= item[i].Category %></td>
+          <td><%= item[i].Subcategory %></td>
+          <td><%= item[i].Brand_Type %></td>
+          <td><%= item[i].Price %></td>
+          <td><%= item[i].Special %></td>
+          <td><%= item[i].Stock %></td>
+        </tr>
+        <% } %> <% } %>
       </table>
 
-      <div class="subheader">
-        Stores
-      </div>
+      <div class="subheader">Stores</div>
       <table id="Store" class="table" border="1">
         <tr>
           <th>Store ID</th>
@@ -226,6 +216,10 @@
           <th>Zip Code</th>
           <th>Store Name</th>
           <th>Store Info</th>
+          <th>Rating</th>
+          <th>Splash image/th>
+          <th>Store Owner Image</th>
+          <th>Store History</th>
         </tr>
         <% if(locals.store){ %> <% for(var i = 0; i < store.length; i++) {%>
         <tr>
@@ -236,6 +230,10 @@
           <td><%= store[i].Address_Zipcode %></td>
           <td><%= store[i].Store_Name %></td>
           <td><%= store[i].Store_Info %></td>
+          <td><%= store[i].Rating %></td>
+          <td><%= store[i].Splash_Image %></td>
+          <td><%= store[i].Owner_Image %></td>
+          <td><%= store[i].Store_History %></td>
         </tr>
         <% } %> <% } %>
       </table>
