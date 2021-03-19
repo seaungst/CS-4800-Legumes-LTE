@@ -54,7 +54,7 @@ function getStoreItems(req, res, next){
 }
 
 function renderStoreView(req, res){
-    res.render("storeview_render_test.ejs");
+    res.render("junk.ejs");
 }
 
 module.exports = router;
