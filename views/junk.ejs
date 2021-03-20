@@ -63,7 +63,9 @@
     <nav class="col-sm-3 col-4" id="myScrollspy">
         
       <ul class="nav nav-pills flex-column" id="test-pills">
-        <h2>Store Name</h2>
+
+        <h2><%= store[0].Store_Name %></h2>
+
           
         <div class="rating"> 
             <input type="radio" name="rating" value="5" id="5">
@@ -78,11 +80,13 @@
             <label for="1">☆</label>
         </div>
           
-        <p>Street<br>
-          City<br>
-          State<br>
-          Zipcode<br>
-          Phone Number
+
+        <p><%= store[0].Address_Street %><br>
+           <%= store[0].Address_City %><br>
+           <%= store[0].Address_State %><br>
+           <%= store[0].Address_Zipcode %><br>
+           <%= store[0].Phone_Number %>
+
         </p>
               
         <h3>Categories</h3>

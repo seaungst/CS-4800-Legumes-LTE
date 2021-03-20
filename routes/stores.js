@@ -37,7 +37,8 @@ function renderStores(req, res){
  *      e.g.: res.locals.items["Pantry"] = [item_object_1, item_object_2, ...] 
  *            res.locals.items["Meat & Seafood"] = [item_object_3, item_object_4, ...] 
  */
-router.post('/detail', getStoreItems, renderStoreView);
+
+router.post('/detail', getStoreItems, getStoreDetails, renderStoreView);
 
 function getStoreItems(req, res, next){
     Item.find({Store_ID: req.body.store_id}, function(err, items){
@@ -51,6 +52,14 @@ function getStoreItems(req, res, next){
         console.log(Object.keys(res.locals.items));
         next();
     });
+}
+
+
+function getStoreDetails(req, res, next){
+  Store.find({Store_ID: req.body.store_id}, function(err, store_details){
+      res.locals.store = store_details;
+      next();
+  });
 }
 
 function renderStoreView(req, res){
