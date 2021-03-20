@@ -37,6 +37,7 @@ function renderStores(req, res){
  *      e.g.: res.locals.items["Pantry"] = [item_object_1, item_object_2, ...] 
  *            res.locals.items["Meat & Seafood"] = [item_object_3, item_object_4, ...] 
  */
+
 router.post('/detail', getStoreItems, getStoreDetails, renderStoreView);
 
 function getStoreItems(req, res, next){
@@ -52,6 +53,7 @@ function getStoreItems(req, res, next){
         next();
     });
 }
+
 
 function getStoreDetails(req, res, next){
   Store.find({Store_ID: req.body.store_id}, function(err, store_details){
