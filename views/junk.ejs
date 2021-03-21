@@ -90,18 +90,11 @@
         </p>
               
         <h3>Categories</h3>
+        <% for(var i in items) {%>
         <li class="nav-item pill">
-          <a class="nav-link active" href="#pantry">Pantry</a>
+          <a class="nav-link " href="#<%= i.replace(/\s/g, '').replace('&',''); %>"><%= i %></a>
         </li>
-        <li class="nav-item pill">
-          <a class="nav-link" href="#dairyEggs">Dairy &amp; Eggs</a>
-        </li>
-        <li class="nav-item pill">
-          <a class="nav-link" href="#meatSeafood">Meat &amp; Seafood</a>
-        </li>
-        <li class="nav-item pill">
-            <a class="nav-link" href="#produce">Produce</a>
-        </li>
+        <% } %>
 
       </ul>
     </nav>
@@ -109,7 +102,7 @@
     <div class="col-sm-9 col-8">
       <!--First Category (Pantry)-->
       <% for(var i in items) { %>
-      <div id="pantry">
+      <div id="<%= i.replace(/\s/g, '').replace('&',''); %>">
            
         <!--Carousel Wrapper-->
         <div id="multi-item-carousel" class="carousel slide carousel-multi-item" data-ride="carousel">
@@ -173,7 +166,7 @@
           </div>
           <!--/.Slides-->
         
-        </div>
+          </div>
         <!--/.Carousel Wrapper-->
       </div>
       <% } %>
@@ -181,10 +174,12 @@
 
   </div>
 
-</div>
+    </div>
     <div class="text-center" id="page-bottom">
       <h3>Chickpea</h3>
       <p>Thank you for shopping with us!</p>
     </div>
+  </div>
+</div>
 </body>
 </html>
