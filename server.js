@@ -18,10 +18,14 @@ app.get("/", (request, response) => {
 /*
  * this section is reserved for the routers
  */
-var DumpRouter = require('./routes/dump')
 var StoreRouter = require('./routes/stores')
-app.use("/dump", DumpRouter);
+var CustomerRouter = require('.routes/customer')
+var RegisterRouter = require('./routes/register')
+var LoginRouter = require('./routes/login')
 app.use("/stores", StoreRouter);
+app.use("/customer", CustomerRouter);
+app.use("/register", RegisterRouter);
+app.use("/login", LoginRouter);
 
 // make all the files in 'public' available
 // https://expressjs.com/en/starter/static-files.html
