@@ -3,14 +3,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta charset="utf-8" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href="/style.css" rel="stylesheet" />
+    <link href="/storesListStyle.css" rel="stylesheet" />
     <title>Chickpea Stores Test</title>
 </head>
+
 <body>
     <div id="header">
         <h1>Stores</h1>
+        Meet the owners and learn more about our wonderful selection of local stores!
     </div>
     <div class="list-group">
-        <li>example store</li>
+        
+            <form action="/stores/detail" method="post">
+                <button type="submit" class="list-group-item list-group-item-action" name="store_name" value="<%= store[i].Store_Name %>">
+                    <div class="row">
+                        <div class="column left">
+                        <t>Store Name<br>
+                            <b>Rating: </b> #.#</t>
+                        </div>
+    
+                        <div class="column middle">
+                            <img src="assets/owner_placeholder.png" alt="Placeholder Owner Picture" style="width:60px;height:60px;">
+                        </div>
+
+                        <div class="column right">
+                        <t>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        </t>
+                        </div>
+                    </div>
+                    
+                    <input type="hidden" name="store_id" value="<%= store[i].Store_ID %>" />
+                </button>
+            </form>
+
     </div>
 </body>
