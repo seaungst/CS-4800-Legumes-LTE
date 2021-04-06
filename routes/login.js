@@ -1,15 +1,10 @@
 // routes responsible for dealing with customer login
 var express = require('express');
-var bodyParser = require('body-parser');
 
 // hashing functionality via bcrypt (https://www.npmjs.com/package/bcrypt)
 const bcrypt = require('bcrypt');
-const saltRounds = 10;
 
 var router = express.Router();
-const app = express();
-
-router.use(bodyParser.urlencoded({ extended: true }));
 
 // requiring the necessary schemas
 var Customer = require('../schemas/customer_schema');

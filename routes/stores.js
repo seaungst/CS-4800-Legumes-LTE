@@ -1,12 +1,7 @@
 // routes responsible for reading store and item data, and sending back relevant data
 var express = require('express');
-var bodyParser = require('body-parser');
 
 var router = express.Router();
-const app = express();
-
-app.set('view engine', 'ejs');
-router.use(bodyParser.urlencoded({ extended: true }));
 
 // requiring the necessary schemas
 var Store = require('../schemas/store_schema');
