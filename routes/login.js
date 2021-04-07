@@ -27,4 +27,9 @@ router.get('/login-success', (req, res, next) => {
 router.get('/login-failure', (req, res, next) => {
     res.send('You entered the wrong password. ):');
 })
+
+router.get('/logout', (req, res, next) => {
+    req.logout();
+    res.redirect('/');
+});
 module.exports = router;

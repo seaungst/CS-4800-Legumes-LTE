@@ -20,13 +20,14 @@ const DB_STRING = "mongodb+srv://" + process.env.db_user + ":" + process.env.db_
 // set app to use ejs (will remove after react integration is complete)
 app.set('view engine', 'ejs');
 
+// setting up the express session
 app.use(session({
   secret: "fillthisinlater",
   resave: false,
   saveUninitialized: true,
   store: MongoStore.create({mongoUrl: DB_STRING}),
   cookie: {
-    maxAge: 1000 * 60
+    maxAge: 1000 * 60 * 5 // cookie will live for like 5 minutes for now
   }
 }));
 
@@ -39,7 +40,7 @@ app.use(passport.session());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
-// requiring all the routes in "/routes"
+// making all the routes in "/routes" available
 app.use(routes);
 
 // make all the files in 'public' available
