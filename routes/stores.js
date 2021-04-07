@@ -1,3 +1,4 @@
+const isAuth = require('./auth_middleware').isAuth;
 // routes responsible for reading store and item data, and sending back relevant data
 var express = require('express');
 
@@ -10,7 +11,7 @@ var Item = require('../schemas/items_schema');
 /* defining the routes here */
 
 // query to retrieve all stores
-router.get('/', getStores, renderStores);
+router.get('/', isAuth, getStores, renderStores);
 
 function getStores(req, res, next){
     Store.find({}, function (err, stores) {

@@ -35,7 +35,7 @@ function checkUserExists(req, res, next){
 
 function hashPassword(req, res, next){
     // generate salt and hash
-    bcrypt.hash(req.body.pw, saltRounds, function(err, hash){
+    bcrypt.hash(req.body.password, saltRounds, function(err, hash){
         res.hashed_string = hash;
         next();
     })

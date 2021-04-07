@@ -1,8 +1,8 @@
 // routes responsible for dealing with customer login
 var express = require('express');
 
-// hashing functionality via bcrypt (https://www.npmjs.com/package/bcrypt)
-const bcrypt = require('bcrypt');
+// requiring passport utils
+const passport = require('passport');
 
 var router = express.Router();
 
@@ -18,23 +18,18 @@ function returnPage(req, res){
 }
 
 //login attempt route
-router.post('/attempt', authenticateCustomer);
+router.post('/attempt', passport.authenticate('local', {failureRedirect: '/login/login-failure', successRedirect: '/login/login-success'}));
 
-function authenticateCustomer(req, res){
-    Customer.findOne({ Username: req.body.username }, function(err, result){
-        if(err) throw err;
-        if(result.length == 0){
-            res.send("This username does not exist!")
-        }
-        bcrypt.compare(req.body.pw, result.Hashed_Password, function(err, isMatch) {
-            if(isMatch){
-                res.send("Welcome, " + result.Username);
-            }
-            else{
-                res.send("Invalid login details!");
-            }
-        });
-    });
-}
+router.get('/login-success', (req, res, next) => {
+    res.send('Successful login!');
+})
 
+router.get('/login-failure', (req, res, next) => {
+    res.send('You entered the wrong password. ):');
+})
+
+router.get('/logout', (req, res, next) => {
+    req.logout();
+    res.redirect('/');
+});
 module.exports = router;
