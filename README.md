@@ -1,4 +1,9 @@
-# hello-express
+# Middleware/API code for final project for CS 4800 Spring 2020 Team Legumes LTE
+
+## Link to our frontend repository:
+https://github.com/NicCas/CS-4800-Legumes-LTE-Frontend/blob/main/README.md
+
+## hello-express
 
 A server that serves a webpage, its resources, and some data
 
