@@ -1,224 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href="/style.css" rel="stylesheet" />
-    <title>Chickpea Test</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+  <meta charset="utf-8" />
+  <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous"
+  />
+  <link href="/storesListStyle.css" rel="stylesheet" />
+  <title>Chickpea API</title>
 </head>
-<body>
-    <div id="header">
-        <h1>Chickpea Database Test Page</h1>
-    </div>
-    
-    <div id="import">
-            <form action="/dump" method="get">
-                <div class="subheader">
-                    Chickpea Database:
-                    <button id="import-button" class="btn" type="submit">Import Data</button>
-                </div>
-            </form>
-    </div>
-    
-    <div class="database-tables">
-        
-        <div class="subheader">
-            Customer
-        </div>
-        <table id="Customer" class="table" border="1" >
-            <tr>
-                <th>Customer ID</th>
-                <th>Username</th>
-                <th>Email</th>
-                <th>Hashed Password</th>
-                <th>Name</th>
-            </tr>
-            <tr>
-                <td>Customer ID</td>
-                <td>Username</td>
-                <td>Email</td>
-                <td>Hashed Password</td>
-                <td>Name</td>
-            </tr>
-        </table>
-        
-        <div class="subheader">
-            Payment Info
-        </div>
-        <table id="Payment Info" class="table" border="1" >
-            <tr>
-                <th>Customer ID</th>
-                <th>Card Number</th>
-                <th>CVV</th>
-                <th>Expiration Date</th>
-                <th>Zip Code</th>
-                <th>Name on Card</th>
-                <th>Billing Address ID</th>
-            </tr>
-            <tr>
-                <td>Customer ID</td>
-                <td>Card Number</td>
-                <td>CVV</td>
-                <td>Expiration Date</td>
-                <td>Zip Code</td>
-                <td>Name on Card</td>
-                <td>Billing Address ID</td>
-            </tr>
-        </table>
-        
-        
-        <div class="subheader">
-            Customer Address
-        </div>
-        <table id="Customer Address" class="table" border="1" >
-            <tr>
-                <th>Address ID</th>
-                <th>Customer ID</th>
-                <th>Street</th>
-                <th>City</th>
-                <th>State</th>
-                <th>Zip Code</th>
-                <th>IsShipping</th>
-                <th>IsBilling</th>
-            </tr>
-            <tr>
-                <td>Address ID</td>
-                <td>Customer ID</td>
-                <td>Street</td>
-                <td>City</td>
-                <td>State</td>
-                <td>Zip Code</td>
-                <td>IsShipping</td>
-                <td>IsBilling</td>
-            </tr>
-        </table>
-        
-        <div class="subheader">
-            Delivery
-        </div>
-        <table id="Delivery" class="table" border="1" >
-            <tr>
-                <th>Delivery ID</th>
-                <th>Customer ID</th>
-                <th>Handler ID</th>
-                <th>Address ID</th>
-                <th>Date &#38; Time</th>
-                <th>Total</th>
-                <th>Delivery Instructions</th>
-                <th>Purchased Items</th>
-            </tr>
-            <tr>
-                <td>Delivery ID</td>
-                <td>Customer ID</td>
-                <td>Handler ID</td>
-                <td>Address ID</td>
-                <td>Date &#38; Time</td>
-                <td>Total</td>
-                <td>Delivery Instructions</td>
-                <td>Purchased Items</td>
-            </tr>
-        </table>
-        
-        <div class="subheader">
-            Favorites
-        </div>
-        <table id="Favorites" class="table" border="1" >
-            <tr>
-                <th>Customer ID</th>
-                <th>Favorite Items</th>
-            </tr>
-             <tr>
-                <td>Customer ID</td>
-                <td>Favorite Items</td>
-            </tr>
-        </table>
-        
-        <div class="subheader">
-            Handler
-        </div>
-        <table id="Handler" class="table" border="1" >
-            <tr>
-                <th>Handler ID</th>
-                <th>Name</th>
-                <th>Street</th>
-                <th>City</th>
-                <th>State</th>
-                <th>Zip Code</th>
-                <th>Number of Reviews</th>
-                <th>Review Score/Total</th>
-                <th>Number of Deliveries</th>
-                <th>Availability Status</th>
-            </tr>
-            <tr>
-                <td>Handler ID</td>
-                <td>Name</td>
-                <td>Street</td>
-                <td>City</td>
-                <td>State</td>
-                <td>Zip Code</td>
-                <td>Number of Reviews</td>
-                <td>Review Score/Total</td>
-                <td>Number of Deliveries</td>
-                <td>Availability Status</td>
-            </tr>
-        </table>
-        
-        <div class="subheader">
-            Items
-        </div>
-        <table id="Items" class="table" border="1" >
-            <tr>
-                <th>Item ID</th>
-                <th>Store ID</th>
-                <th>Item Name</th>
-                <th>Category</th>
-                <th>Sub-Category</th>
-                <th>IsBrand</th>
-                <th>Price</th>
-                <th>Stock</th>
-                <th>Special Details</th>
-            </tr>
-            <tr>
-                <td>Item ID</td>
-                <td>Store ID</td>
-                <td>Item Name</td>
-                <td>Category</td>
-                <td>Sub-Category</td>
-                <td>IsBrand</td>
-                <td>Price</td>
-                <td>Stock</td>
-                <td>Special Details</td>
-            </tr>
-        </table>
-        
-        <div class="subheader">
-            Stores
-        </div>
-        <table id="Store" class="table" border="1" >
-            <tr>
-                <th>Store ID</th>
-                <th>Street</th>
-                <th>City</th>
-                <th>State</th>
-                <th>Zip Code</th>
-                <th>Store Name</th>
-                <th>Store Info</th>
-            </tr>
-            <tr>
-                <td>Store ID</td>
-                <td>Street</td>
-                <td>City</td>
-                <td>State</td>
-                <td>Zip Code</td>
-                <td>Store Name</td>
-                <td>Store Info</td>
-            </tr>
-        </table>
-        
-    </div>
-    
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-</body>
-</html>
 
+<body>
+  <div id="api-landing-page">
+    <div id="header">
+      <h1>Chickpea API Test</h1>
+    </div>
+
+    <div id="link-list">
+      <ul>
+        <li><a href="/register">Sign Up Page</a></li>
+        <li><a href="/login">Login Page</a></li>
+        <li><a href="/stores">Stores Test Page</a></li>
+      </ul>
+    </div>
+  </div>
+</body>
