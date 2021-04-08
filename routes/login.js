@@ -21,7 +21,7 @@ function returnPage(req, res){
 router.post('/attempt', passport.authenticate('local', {failureRedirect: '/login/login-failure', successRedirect: '/login/login-success'}));
 
 router.get('/login-success', (req, res, next) => {
-    res.send('Successful login!');
+    res.redirect('/stores');
 })
 
 router.get('/login-failure', (req, res, next) => {
