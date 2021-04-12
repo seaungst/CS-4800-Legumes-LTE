@@ -11,12 +11,13 @@ var Item = require('../schemas/items_schema');
 /* defining the routes here */
 
 // query to retrieve all stores
-router.get('/', isAuth, getStores, renderStores);
+router.get('/', /*isAuth,*/ getStores, renderStores);
 
 function getStores(req, res, next){
     Store.find({}, function (err, stores) {
-        res.locals.store = stores;
-        next();
+        res.send(stores);
+        //res.locals.store = stores;
+        //next();
     });
 };
 

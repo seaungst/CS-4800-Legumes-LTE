@@ -3,6 +3,7 @@
 
 // we've started you off with Express (https://expressjs.com/)
 // but feel free to use whatever libraries or frameworks you'd like through `package.json`.
+const cors = require('cors')
 const express = require("express");
 const mongoose = require("mongoose");
 const session = require('express-session');
@@ -16,6 +17,9 @@ require('dotenv').config()
 
 // db string const
 const DB_STRING = "mongodb+srv://" + process.env.db_user + ":" + process.env.db_pw + "@chickpeacluster.ol3yz.mongodb.net/Chickpea?retryWrites=true&w=majority";
+
+// allow cross origin referencing
+app.use(cors());
 
 // set app to use ejs (will remove after react integration is complete)
 app.set('view engine', 'ejs');
