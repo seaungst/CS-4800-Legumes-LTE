@@ -18,8 +18,15 @@ require('dotenv').config()
 // db string const
 const DB_STRING = "mongodb+srv://" + process.env.db_user + ":" + process.env.db_pw + "@chickpeacluster.ol3yz.mongodb.net/Chickpea?retryWrites=true&w=majority";
 
+// configure cors
+var corsOptions = {
+  origin: 'https://localhost:3000',
+  credentials: true,
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+
 // allow cross origin referencing
-app.use(cors());
+app.use(cors(corsOptions));
 
 // set app to use ejs (will remove after react integration is complete)
 app.set('view engine', 'ejs');
