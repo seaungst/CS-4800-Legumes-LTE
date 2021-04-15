@@ -18,15 +18,13 @@ require('dotenv').config()
 // db string const
 const DB_STRING = "mongodb+srv://" + process.env.db_user + ":" + process.env.db_pw + "@chickpeacluster.ol3yz.mongodb.net/Chickpea?retryWrites=true&w=majority";
 
-// configure cors
-var corsOptions = {
-  origin: 'https://localhost:3000',
-  credentials: true,
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-}
-
 // allow cross origin referencing
-app.use(cors(corsOptions));
+app.use(cors({
+  origin: ['http://localhost:3000', 'https://chickpea.glitch.me/'],
+  methods: ['POST', 'PUT', 'GET', 'OPTIONS', 'HEAD'],
+  credentials: true,
+  allowedHeaders: 'Content-Type'
+}));
 
 // set app to use ejs (will remove after react integration is complete)
 app.set('view engine', 'ejs');
@@ -38,7 +36,9 @@ app.use(session({
   saveUninitialized: true,
   store: MongoStore.create({mongoUrl: DB_STRING}),
   cookie: {
-    maxAge: 1000 * 60 * 5 // cookie will live for like 5 minutes for now
+    maxAge: 1000 * 60 * 5, // cookie will live for like 5 minutes for now
+    secure: false,
+    httpOnly: false,
   }
 }));
 

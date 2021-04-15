@@ -53,7 +53,7 @@ function getStoreItems(req, res, next){
 
 
 function getStoreDetails(req, res, next){
-  Store.find({Store_ID: req.body.store_id}, function(err, store_details){
+  Store.findOne({Store_ID: req.body.store_id}, function(err, store_details){
       res.locals.store = store_details;
       next();
   });
