@@ -12,6 +12,9 @@ const passport = require('passport');
 var routes = require('./routes');
 const app = express();
 
+// trust first proxy for glitch?
+app.set('trust proxy', 1);
+
 // gives access to the variables in .env
 require('dotenv').config()
 
@@ -19,7 +22,12 @@ require('dotenv').config()
 const DB_STRING = "mongodb+srv://" + process.env.db_user + ":" + process.env.db_pw + "@chickpeacluster.ol3yz.mongodb.net/Chickpea?retryWrites=true&w=majority";
 
 // allow cross origin referencing
-app.use(cors());
+app.use(cors({
+  origin: ['http://localhost:3000', 'https://localhost:3000', 'https://chickpea.glitch.me'],
+  methods: ['POST', 'PUT', 'GET', 'OPTIONS', 'HEAD'],
+  credentials: true,
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
 // set app to use ejs (will remove after react integration is complete)
 app.set('view engine', 'ejs');
@@ -31,7 +39,10 @@ app.use(session({
   saveUninitialized: true,
   store: MongoStore.create({mongoUrl: DB_STRING}),
   cookie: {
-    maxAge: 1000 * 60 * 5 // cookie will live for like 5 minutes for now
+    maxAge: 1000 * 60 * 5, // cookie will live for like 5 minutes for now
+    sameSite: 'none',
+    secure: true,
+    httpOnly: false,
   }
 }));
 
@@ -60,6 +71,6 @@ app.get("/", (request, response) => {
 });
 
 // listen for requests :)
-const listener = app.listen(process.env.PORT || 3000, () => {
+const listener = app.listen(process.env.PORT || 3001, () => {
   console.log("Your app is listening on port " + listener.address().port);
 });

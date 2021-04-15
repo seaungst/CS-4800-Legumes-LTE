@@ -21,11 +21,13 @@ function returnPage(req, res){
 router.post('/attempt', passport.authenticate('local', {failureRedirect: '/login/login-failure', successRedirect: '/login/login-success'}));
 
 router.get('/login-success', (req, res, next) => {
-    res.redirect('/stores');
+    req.session.cart = [2, 4, 22, 25];
+    res.send(true)
+    next();
 })
 
 router.get('/login-failure', (req, res, next) => {
-    res.send('You entered the wrong password. ):');
+    res.send(false);
 })
 
 router.get('/logout', (req, res, next) => {
