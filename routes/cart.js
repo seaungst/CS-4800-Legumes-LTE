@@ -10,7 +10,7 @@ var router = express.Router();
 
 /* defining the routes here */
 // return cart object
-router.get('/', isAuth, getCartItems, getStoreNames);
+router.get('/', /*isAuth,*/ getCartItems, getStoreNames);
 
 function getCartItems(req, res, next){
     // finding all items in cart
