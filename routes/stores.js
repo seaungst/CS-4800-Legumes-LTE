@@ -35,7 +35,7 @@ function renderStores(req, res){
  *            res.locals.items["Meat & Seafood"] = [item_object_3, item_object_4, ...] 
  */
 
-router.post('/detail', getStoreItems, getStoreDetails, renderStoreView);
+router.post('/detail', getStoreItems, getStoreDetails);
 
 function getStoreItems(req, res, next){
     Item.find({Store_ID: req.body.store_id}, function(err, items){
@@ -55,7 +55,7 @@ function getStoreItems(req, res, next){
 function getStoreDetails(req, res, next){
   Store.findOne({Store_ID: req.body.store_id}, function(err, store_details){
       res.locals.store = store_details;
-      next();
+      res.send(res.locals);
   });
 }
 
