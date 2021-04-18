@@ -97,6 +97,7 @@ t {
 
 #link-list {
   padding: 50px;
+  padding-top: 20px;
   font-size: 20px;
   color: var(--purple5);
 }

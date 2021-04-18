@@ -18,14 +18,91 @@
 <body>
   <div id="api-landing-page">
     <div id="header">
-      <h1>Chickpea API Test</h1>
+      <h1>Chickpea API Endpoints</h1>
+      <p style="font-size: x-large; font-weight: 400;">
+        This page was created as a reference for anyone who works on the <a href="https://github.com/NicCas/CS-4800-Legumes-LTE-Frontend" target="_blank">frontend side of our CS 4800 project</a>.
+        It lists out the current routes/API endpoints that the frontend can make requests to. It also lists what
+        each route generally does, what needs to be passed to them, and what to expect as a response from them.
+      </p>
     </div>
-
     <div id="link-list">
+      <h2>/register</h2>
       <ul>
-        <li><a href="/register">Sign Up Page</a></li>
-        <li><a href="/login">Login Page</a></li>
-        <li><a href="/stores">Stores Test Page</a></li>
+        <li>
+          /register/sign-up (POST request)
+          <ul>
+            <li>does not need authentication in our server to access</li>
+            <li>registers a new customer into our database if they do not exist</li>
+            <li>for now, expects 4 parameters in the request body: username, password, 
+              name, email</li>
+            <li>upon successful registration, the server sends back a message to the client 
+              saying "successfully registered your account."</li>
+          </ul>
+        </li>
+      </ul>
+      <h2>/login</h2>
+      <ul>
+        <li>
+          /login/attempt (POST request)
+          <ul>
+            <li>does not need authentication in our server to access</li>
+            <li>authenticates a customer based on the credentials they provided</li>
+            <li>expects 2 parameters in the request body: username, password</li>
+            <li>upon successful authentication the server will send <b>true</b> 
+              and create a cart session object, and it will send <b>false</b> otherwise. 
+              a cookie will be set on the client browser too</li>
+          </ul>
+        </li>
+        <li>
+          /login/logout (GET request)
+          <ul>
+            <li>does not need authentication in our server to access, but that may change</li>
+            <li>logs out a customer provided that they are logged in</li>
+          </ul>
+        </li>
+      </ul>
+      <h2>/stores</h2>
+      <ul>
+        <li>
+          /stores (GET request)
+          <ul>
+            <li>does not need authentication in our server to access</li>
+            <li>sends back the list of stores from our database in a container like an array</li>
+          </ul>
+        </li>
+        <li>
+          /stores/detail (POST request)
+          <ul>
+            <li>does not need authentication in our server to access</li>
+            <li>expects 1 parameter in the request body: store_id</li>
+            <li>given a particular store_id, it sends back a list of items
+              associated with the store, as well as its details like its name,
+              address, rating, etc.
+            </li>
+            <li>items are accessed via res.data.items, and the store information 
+              is accessed via res.data.store
+            </li>
+            <li>items are indexed by their category name, e.g. res.data.items["Pantry"]
+              will return a list of Pantry items for that store
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h2>/cart</h2>
+      <ul>
+        <li>
+          /cart (GET request)
+          <ul>
+            <li><b>requires authentication in our server to access</b></li>
+            <li>returns a list of items based on what is set on the customer's session cart,
+              and soon, their quantities too
+            </li>
+            <li>in addition to the fields defined in our items schema, each
+              item has a field attached to it that holds the name of the store
+              it comes from (Store_Name)
+            </li>
+          </ul>
+        </li>
       </ul>
     </div>
   </div>
