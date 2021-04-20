@@ -10,12 +10,25 @@ var router = express.Router();
 
 /* defining the routes here */
 // return cart object
-router.get('/', /*isAuth,*/ getCartItems, getStoreNames);
+router.get('/', isAuth, getCartItems, getStoreNames);
 
 function getCartItems(req, res, next){
+    // extracting item ids from cart
+    var id_list = [];
+    for(var cart_item of req.session.cart){
+        id_list.push(cart_item.Item_ID);
+    }
     // finding all items in cart
-    Item.find({Item_ID: {$in: req.session.cart}}).lean().exec(function(err, items){
+    Item.find({Item_ID: {$in: id_list}}).lean().exec(function(err, items){
         res.locals.items = items;
+        // attach quantities to each item
+        for(var item of res.locals.items){
+            for(var cart_item of req.session.cart){
+                if(item.Item_ID == cart_item.Item_ID){
+                    item.Quantity = cart_item.Quantity;
+                }
+            }
+        }
         next();
     })
 }
@@ -42,6 +55,34 @@ function getStoreNames(req, res){
         }
         res.send(res.locals.items);
     });
+}
+
+router.get("/AddTo", function(req, res, next){
+    res.sendFile("/views/addtocart_test.html", { root: './'});
+})
+
+router.post("/add", isAuth, addToCart);
+
+function addToCart(req, res, next){
+    // grabbing the data from the request body
+    var item = {};
+    var added = false;
+    item.Item_ID = req.body.Item_ID;
+    item.Quantity = req.body.Quantity;
+
+    // if item is already in cart, add to the existing quantity
+    for(var cart_item of req.session.cart){
+        if(item.Item_ID == cart_item.Item_ID){
+            cart_item.Quantity += item.Quantity;
+            added = true;
+        }
+    }
+
+    // if item wasn't added (doesn't exist in cart), add it
+    if(!added){
+        req.session.cart.push(item);
+    }
+    res.send(item);
 }
 
 module.exports = router;

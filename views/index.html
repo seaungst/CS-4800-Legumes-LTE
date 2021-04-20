@@ -94,14 +94,45 @@
           /cart (GET request)
           <ul>
             <li><b>requires authentication in our server to access</b></li>
-            <li>returns a list of items based on what is set on the customer's session cart,
-              and soon, their quantities too
+            <li>returns a list of items based on what is set on the customer's session cart
             </li>
             <li>in addition to the fields defined in our items schema, each
               item has a field attached to it that holds the name of the store
-              it comes from (Store_Name)
+              it comes from (Store_Name) and a field for quantities (Quantity)
             </li>
           </ul>
+        </li>
+        <li>
+          /cart/add (POST  request)
+          <ul>
+            <li><b>requires authentication in our server to access</b></li>
+            <li>expects 2 parameters in the request body: Item_ID and Quantity</li>
+            <li>
+              creates an item object of the format {Item_ID:, Quantity:} and adds
+              it to the user's existing session cart
+            </li>
+            <li>
+              if the item is already in the cart, the Quantity specified by the request
+              will be added to the item's existing Quantity value
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h2>/user</h2>
+      <ul>
+        <li>does not need authentication in our server to access</li>
+        <li>
+          checks if a user is logged in our system; if so, the server sends back an object in this format:<br>
+          data = {
+            Username: '...',
+            loggedIn: true
+          }
+        </li>
+        <li>
+          if a user is not logged in, the response will be like this:<br>
+          data = {
+            loggedIn: false
+          }
         </li>
       </ul>
     </div>
