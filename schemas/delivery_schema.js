@@ -8,7 +8,8 @@ const DeliverySchema = new mongoose.Schema({
     Date: { type: Date },
     Total_Cost: { type: Number },
     Delivery_Instructions: { type: String },
-    Purchased_Items: {type: [Number] }
+    Purchased_Items: { type: [Number] },
+    Delivered: {type: Boolean}
 });
 
 module.exports = mongoose.model('Delivery', DeliverySchema, 'Delivery');
