@@ -57,10 +57,12 @@ function getStoreNames(req, res){
     });
 }
 
+// add to cart page, for testing
 router.get("/AddTo", function(req, res, next){
     res.sendFile("/views/addtocart_test.html", { root: './'});
 })
 
+// add to cart based on Item_ID in request body
 router.post("/add", isAuth, addToCart);
 
 function addToCart(req, res, next){
@@ -83,6 +85,21 @@ function addToCart(req, res, next){
         req.session.cart.push(item);
     }
     res.send(item);
+}
+
+// remove from cart based on Item_ID in request body
+router.post("/remove", isAuth, removeFromCart);
+
+function removeFromCart(req, res) {
+    // grab Item_ID from request body
+    var Item_ID = req.body.Item_ID;
+
+    // create new cart without item with Item_ID, assign to session cart
+    var new_cart = [];
+    for(var cart_item of req.session.cart)
+        if(cart_item.Item_ID != Item_ID)
+            new_cart.push(cart_item)
+    req.session.cart = new_cart;
 }
 
 module.exports = router;

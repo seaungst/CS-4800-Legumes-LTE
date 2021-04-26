@@ -117,22 +117,52 @@
             </li>
           </ul>
         </li>
+        <li>
+          /cart/remove (POST  request)
+          <ul>
+            <li><b>requires authentication in our server to access</b></li>
+            <li>expects 1 parameter in the request body: Item_ID</li>
+            <li>
+              removes the item in the session cart with the specified Item_ID
+            </li>
+          </ul>
+        </li>
       </ul>
       <h2>/user</h2>
       <ul>
-        <li>does not need authentication in our server to access</li>
         <li>
-          checks if a user is logged in our system; if so, the server sends back an object in this format:<br>
-          data = {
-            Username: '...',
-            loggedIn: true
-          }
+          /user (GET request)
+          <ul>
+            <li>does not need authentication in our server to access</li>
+            <li>
+              checks if a user is logged in our system; if so, the server sends back an object in this format:<br>
+              data = {
+                Username: '...',
+                loggedIn: true
+              }
+            </li>
+            <li>
+              if a user is not logged in, the response will be like this:<br>
+              data = {
+                loggedIn: false
+              }
+            </li>
+          </ul>
         </li>
         <li>
-          if a user is not logged in, the response will be like this:<br>
-          data = {
-            loggedIn: false
-          }
+          /user/account-details (GET request)
+          <ul>
+            <li><b>requires authentication in our server to access</b></li>
+            <li>
+              if customer is logged in, the server returns information related to the customer,
+              which includes the following:
+              <ul>
+                <li>addresses (data.addresses)</li>
+                <li>payment details (data.payments)</li>
+                <li>favorite items (data.favorites)</li>
+              </ul>
+            </li>
+          </ul>
         </li>
       </ul>
     </div>
