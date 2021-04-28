@@ -3,8 +3,73 @@ const isAuth = require('./auth_middleware').isAuth;
 
 // requiring the schemas needed
 var Item = require('../schemas/items_schema');
-var Handler = require('../schemas/handler_schema');
-var Customer = require('../schemas/customer_schema');
 var CustomerAddress = require('../schemas/customer_address_schema');
-var PaymentInfo = require('../schemas/payment_info_schema');
 var Delivery = require('../schemas/delivery_schema');
+
+// route for the entire checkout process
+router.post("/", isAuth);
+
+function getShippingAddress(req, res, next){
+    CustomerAddress.findOne({ 
+        Street: req.body.Shipping_Street,
+        City: req.body.Shipping_City,
+        State: req.body.Shipping_State,
+        Zip_Code: req.body.Shipping_ZIP,
+        Is_Shipping: true
+    }, function(err, Shipping_Address){
+        if(!Shipping_Address) {
+            // register new shipping address
+        }
+        else{
+            res.locals.ShippingAddressID = Shipping_Address.Address_ID;
+        }
+        next();
+    })
+}
+
+function getBillingAddress(req, res, next){
+    CustomerAddress.findOne({ 
+        Street: req.body.Billing_Street,
+        City: req.body.Billing_City,
+        State: req.body.Billing_State,
+        Zip_Code: req.body.Billing_ZIP,
+        Is_Billing: true
+    }, function(err, Billing_Address){
+        if(!Billing_Address) {
+            // register new billing address
+        }
+        else{
+            res.locals.BillingAddressID = Shipping_Address.Address_ID;
+        }
+        next();
+    })
+}
+
+function calculateCartTotal(req, res, next){
+    // extracting item ids from cart
+    var id_list = [];
+    res.locals.total = 0;
+    for(var cart_item of req.session.cart){
+        id_list.push(cart_item.Item_ID);
+    }
+    // finding all items in cart and getting the total
+    Item.find({Item_ID: {$in: id_list}}).lean().exec(function(err, items){
+        // attach quantities to each item
+        for(var item of res.locals.items){
+            for(var cart_item of req.session.cart){
+                if(item.Item_ID == cart_item.Item_ID){
+                    item.Quantity = cart_item.Quantity;
+                }
+            }
+        }
+        // calculate total
+        for(var item of res.locals.items){
+            res.locals.total += (item.Price.$numberDecimal * item.Quantity);
+        }
+        next();
+    })
+}
+
+function createDeliveryDocument(req, res, next){
+    
+}
