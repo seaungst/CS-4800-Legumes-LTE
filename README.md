@@ -7,7 +7,7 @@ https://github.com/NicCas/CS-4800-Legumes-LTE-Frontend/blob/main/README.md
 # Chickpea API Endpoints
 
 This page was created as a reference for anyone who works on the frontend side of our CS 4800 project. It lists out the current routes/API endpoints that the frontend can make requests to. It also lists what each route generally does, what needs to be passed to them, and what to expect as a response from them.
-/register
+### /register
 
     /register/sign-up (POST request)
         does not need authentication in our server to access
@@ -15,7 +15,7 @@ This page was created as a reference for anyone who works on the frontend side o
         for now, expects 4 parameters in the request body: username, password, name, email
         upon successful registration, the server sends back a message to the client saying "successfully registered your account."
 
-/login
+### /login
 
     /login/attempt (POST request)
         does not need authentication in our server to access
@@ -26,7 +26,7 @@ This page was created as a reference for anyone who works on the frontend side o
         does not need authentication in our server to access, but that may change
         logs out a customer provided that they are logged in
 
-/stores
+### /stores
 
     /stores (GET request)
         does not need authentication in our server to access
@@ -38,7 +38,7 @@ This page was created as a reference for anyone who works on the frontend side o
         items are accessed via res.data.items, and the store information is accessed via res.data.store
         items are indexed by their category name, e.g. res.data.items["Pantry"] will return a list of Pantry items for that store
 
-/cart
+### /cart
 
     /cart (GET request)
         requires authentication in our server to access
@@ -54,7 +54,7 @@ This page was created as a reference for anyone who works on the frontend side o
         expects 1 parameter in the request body: Item_ID
         removes the item in the session cart with the specified Item_ID
 
-/user
+### /user
 
     /user (GET request)
         does not need authentication in our server to access
