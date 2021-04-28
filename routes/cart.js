@@ -100,6 +100,7 @@ function removeFromCart(req, res) {
         if(cart_item.Item_ID != Item_ID)
             new_cart.push(cart_item)
     req.session.cart = new_cart;
+    res.send("removed item");
 }
 
 module.exports = router;
