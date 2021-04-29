@@ -47,14 +47,15 @@ function getBillingAddress(req, res, next){
     })
 }
 
-function updateStock(req, res, next){
+async function updateStock(req, res, next){
+    console.log(req.session.cart);
     for(var cart_item of req.session.cart){
-        Item.findOne({Item_ID: cart_item.Item_ID})
-            .select('Stock')
-            .exec(function(err, item){
-                item.Stock = item.Stock - cart_item.Quantity;
-                await item.save();
-            })
+        var quantity = cart_item.Quantity;
+        console.log(quantity);
+        var item = await Item.findOne({Item_ID: cart_item.Item_ID}).select('Stock');
+        item.Stock = item.Stock - quantity;
+        await item.save();
+      
     }
     next();
 }
@@ -92,12 +93,13 @@ function createDeliveryDocument(req, res, next){
             BillingAddressID: res.locals.BillingAddressID,
             Date: new Date(),
             Total_Cost: res.locals.total,
-            Delivery_Instructions: "",
+            Delivery_Instructions: req.body.Delivery_Instructions,
             Purchased_Items: req.session.cart,
             Delivered: false
         }
         var new_delivery = new Delivery(deliveryData);
         new_delivery.save();
+        console.log("added delivery document")
         res.send(deliveryData);
         });
 }
