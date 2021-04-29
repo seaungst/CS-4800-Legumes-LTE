@@ -39,7 +39,7 @@ app.use(session({
   saveUninitialized: true,
   store: MongoStore.create({mongoUrl: DB_STRING}),
   cookie: {
-    maxAge: 1000 * 60 * 5, // cookie will live for like 5 minutes for now
+    maxAge: 1000 * 60 * 10, // cookie will live for like 10 minutes for now
     // comment out these three options when solely testing the middleware/backend (i.e. not doing cross-site work)
     
     sameSite: 'none',
