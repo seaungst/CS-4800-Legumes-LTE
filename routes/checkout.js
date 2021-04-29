@@ -9,7 +9,7 @@ var Delivery = require('../schemas/delivery_schema');
 var router = express.Router();
 
 // route for the entire checkout process
-router.post("/", isAuth, createDeliveryDocument);
+router.post("/", isAuth, getShippingAddress, getBillingAddress, calculateCartTotal, createDeliveryDocument);
 
 function getShippingAddress(req, res, next){
     CustomerAddress.findOne({ 
@@ -56,17 +56,13 @@ function calculateCartTotal(req, res, next){
     }
     // finding all items in cart and getting the total
     Item.find({Item_ID: {$in: id_list}}).lean().exec(function(err, items){
-        // attach quantities to each item
-        for(var item of res.locals.items){
+        // calculate total
+        for(var item of items){
             for(var cart_item of req.session.cart){
                 if(item.Item_ID == cart_item.Item_ID){
-                    item.Quantity = cart_item.Quantity;
+                    res.locals.total += (item.Price * cart_item.Quantity);
                 }
             }
-        }
-        // calculate total
-        for(var item of res.locals.items){
-            res.locals.total += (item.Price.$numberDecimal * item.Quantity);
         }
         next();
     })
@@ -79,11 +75,11 @@ function createDeliveryDocument(req, res, next){
         var deliveryData = {
             Delivery_ID: new_id,
             CustomerID: req.user.CustomerID,
-            //Handler_ID: req.body.Handler_ID,
-            //ShippingAddressID: res.locals.ShippingAddressID,
-            //BillingAddressID: res.locals.BillingAddressID,
+            Handler_ID: req.body.Handler_ID,
+            ShippingAddressID: res.locals.ShippingAddressID,
+            BillingAddressID: res.locals.BillingAddressID,
             Date: new Date(),
-            //Total_Cost: res.locals.total,
+            Total_Cost: res.locals.total,
             Delivery_Instructions: "",
             Purchased_Items: req.session.cart,
             Delivered: false
