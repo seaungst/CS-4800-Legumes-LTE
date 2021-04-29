@@ -100,7 +100,7 @@ function createDeliveryDocument(req, res, next){
         var new_delivery = new Delivery(deliveryData);
         new_delivery.save();
         console.log("added delivery document")
-        res.send(deliveryData);
+        res.send(true);
         });
 }
 
