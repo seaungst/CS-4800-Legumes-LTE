@@ -9,7 +9,7 @@ var Delivery = require('../schemas/delivery_schema');
 var router = express.Router();
 
 // route for the entire checkout process
-router.get("/", isAuth, createDeliveryDocument);
+router.post("/", isAuth, createDeliveryDocument);
 
 function getShippingAddress(req, res, next){
     CustomerAddress.findOne({ 
@@ -41,7 +41,7 @@ function getBillingAddress(req, res, next){
             // register new billing address
         }
         else{
-            res.locals.BillingAddressID = Shipping_Address.Address_ID;
+            res.locals.BillingAddressID = Billing_Address.Address_ID;
         }
         next();
     })
@@ -79,16 +79,17 @@ function createDeliveryDocument(req, res, next){
         var deliveryData = {
             Delivery_ID: new_id,
             CustomerID: req.user.CustomerID,
-            Handler_ID: req.body.Handler_ID,
-            ShippingAddressID: res.locals.ShippingAddressID,
-            BillingAddressID: res.locals.BillingAddressID,
+            //Handler_ID: req.body.Handler_ID,
+            //ShippingAddressID: res.locals.ShippingAddressID,
+            //BillingAddressID: res.locals.BillingAddressID,
             Date: new Date(),
-            Total_Cost: res.locals.total,
+            //Total_Cost: res.locals.total,
             Delivery_Instructions: "",
             Purchased_Items: req.session.cart,
             Delivered: false
         }
         var new_delivery = new Delivery(deliveryData);
+        new_delivery.save();
         res.send(deliveryData);
         });
 }
