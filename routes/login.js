@@ -21,7 +21,7 @@ function returnPage(req, res){
 router.post('/attempt', passport.authenticate('local', {failureRedirect: '/login/login-failure', successRedirect: '/login/login-success'}));
 
 router.get('/login-success', (req, res, next) => {
-    req.session.cart = [{Item_ID: 2, Quantity: 1}, {Item_ID: 4, Quantity: 2}, {Item_ID: 25, Quantity: 1}];
+    req.session.cart = [{Item_ID: 4, Quantity: 2}, {Item_ID: 25, Quantity: 1}];
     res.send(true)
     next();
 })

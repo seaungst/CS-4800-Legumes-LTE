@@ -6,8 +6,10 @@ var Item = require('../schemas/items_schema');
 var CustomerAddress = require('../schemas/customer_address_schema');
 var Delivery = require('../schemas/delivery_schema');
 
+var router = express.Router();
+
 // route for the entire checkout process
-router.post("/", isAuth);
+router.get("/", isAuth, createDeliveryDocument);
 
 function getShippingAddress(req, res, next){
     CustomerAddress.findOne({ 
@@ -71,5 +73,24 @@ function calculateCartTotal(req, res, next){
 }
 
 function createDeliveryDocument(req, res, next){
-    
+    Delivery.findOne({}).sort({Delivery_ID : -1}).exec( function(err, delivery) {
+        // use maxID to make new id
+        var new_id = delivery.Delivery_ID + 1;
+        var deliveryData = {
+            Delivery_ID: new_id,
+            CustomerID: req.user.CustomerID,
+            Handler_ID: req.body.Handler_ID,
+            ShippingAddressID: res.locals.ShippingAddressID,
+            BillingAddressID: res.locals.BillingAddressID,
+            Date: new Date(),
+            Total_Cost: res.locals.total,
+            Delivery_Instructions: "",
+            Purchased_Items: req.session.cart,
+            Delivered: false
+        }
+        var new_delivery = new Delivery(deliveryData);
+        res.send(deliveryData);
+        });
 }
+
+module.exports = router;
