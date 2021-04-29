@@ -9,7 +9,7 @@ var Delivery = require('../schemas/delivery_schema');
 var router = express.Router();
 
 // route for the entire checkout process
-router.post("/", isAuth, getShippingAddress, getBillingAddress, calculateCartTotal, createDeliveryDocument);
+router.post("/", isAuth, getShippingAddress, getBillingAddress, updateStock, calculateCartTotal, createDeliveryDocument);
 
 function getShippingAddress(req, res, next){
     CustomerAddress.findOne({ 
@@ -47,10 +47,22 @@ function getBillingAddress(req, res, next){
     })
 }
 
+function updateStock(req, res, next){
+    for(var cart_item of req.session.cart){
+        Item.findOne({Item_ID: cart_item.Item_ID})
+            .select('Stock')
+            .exec(function(err, item){
+                item.Stock = item.Stock - cart_item.Quantity;
+                await item.save();
+            })
+    }
+    next();
+}
+
 function calculateCartTotal(req, res, next){
+    res.locals.total = 0;
     // extracting item ids from cart
     var id_list = [];
-    res.locals.total = 0;
     for(var cart_item of req.session.cart){
         id_list.push(cart_item.Item_ID);
     }
