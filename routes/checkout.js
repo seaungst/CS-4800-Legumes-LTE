@@ -21,6 +21,23 @@ function getShippingAddress(req, res, next){
     }, function(err, Shipping_Address){
         if(!Shipping_Address) {
             // register new shipping address
+            CustomerAddress.findOne({}).sort({Delivery_ID : -1}).exec( function(err, address) {
+                // use maxID to make new id
+                var new_id = address.Address_ID + 1;
+                var shipping_address_data = {
+                    Address_ID: new_id,
+                    CustomerID: req.user.CustomerID,
+                    Street: req.body.Shipping_Street,
+                    City: req.body.Shipping_City,
+                    State: req.body.Shipping_State,
+                    Zip_Code: req.body.Shipping_ZIP,
+                    Is_Shipping: true,
+                    Is_Billing: null
+                }
+                var new_shipping = new CustomerAddress(shipping_address_data);
+                new_shipping.save();
+                res.locals.ShippingAddressID = new_id;
+            });
         }
         else{
             res.locals.ShippingAddressID = Shipping_Address.Address_ID;
@@ -39,6 +56,23 @@ function getBillingAddress(req, res, next){
     }, function(err, Billing_Address){
         if(!Billing_Address) {
             // register new billing address
+            CustomerAddress.findOne({}).sort({Delivery_ID : -1}).exec( function(err, address) {
+                // use maxID to make new id
+                var new_id = address.Address_ID + 1;
+                var billing_address_data = {
+                    Address_ID: new_id,
+                    CustomerID: req.user.CustomerID,
+                    Street: req.body.Billing_Street,
+                    City: req.body.Billing_City,
+                    State: req.body.Billing_State,
+                    Zip_Code: req.body.Billing_ZIP,
+                    Is_Shipping: null,
+                    Is_Billing: true
+                }
+                var new_billing = new CustomerAddress(billing_address_data);
+                new_billing.save();
+                res.locals.BillingAddressID = new_id;
+            });
         }
         else{
             res.locals.BillingAddressID = Billing_Address.Address_ID;
@@ -100,7 +134,7 @@ function createDeliveryDocument(req, res, next){
         var new_delivery = new Delivery(deliveryData);
         new_delivery.save();
         console.log("added delivery document")
-        res.send(deliveryData);
+        res.send(true);
         });
 }
 
