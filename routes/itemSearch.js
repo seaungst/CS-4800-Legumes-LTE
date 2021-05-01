@@ -10,16 +10,21 @@ var Item = require('../schemas/items_schema');
 //Get the user search
 var entry;
 
-router.get('/query', getSearchEntry, getSearchResults);
+router.get('/', returnPage);
+
+function returnPage(req, res){
+    res.sendFile("/views/search.html", { root: './'});
+}
+
+router.post('/query', getSearchEntry, getSearchResults);
 
 function getSearchEntry(req, res, next){
     entry = req.body.searchInput;
-    console.log(entry)
+    console.log(entry);
     next();
 }
 
 function getSearchResults(req, res){
-
     Item.find({
         $text: {
             $search: entry
