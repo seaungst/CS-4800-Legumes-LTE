@@ -9,11 +9,14 @@ var Item = require('../schemas/items_schema');
 
 //Get the user search
 var entry;
-router.get("", function(req, res, err) {
-    entry = req.body.searchQuery;
-})
 
-router.post('/query', getSearchResults);
+router.get('/query', getSearchEntry, getSearchResults);
+
+function getSearchEntry(req, res, next){
+    entry = req.body.searchInput;
+    console.log(entry)
+    next();
+}
 
 function getSearchResults(req, res){
 

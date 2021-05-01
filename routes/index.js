@@ -8,7 +8,7 @@ var CartRouter = require('./cart')
 var UserRouter = require('./user')
 var HandlerRouter = require('./handler')
 var CheckoutRouter = require('./checkout')
-var SearchRouter = require('./search')
+var SearchRouter = require('./itemSearch')
 
 router.use("/stores", StoreRouter)
 router.use("/register", RegisterRouter)
