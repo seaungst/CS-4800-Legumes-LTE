@@ -8,6 +8,7 @@ var CartRouter = require('./cart')
 var UserRouter = require('./user')
 var HandlerRouter = require('./handler')
 var CheckoutRouter = require('./checkout')
+var SearchRouter = require('./search')
 
 router.use("/stores", StoreRouter)
 router.use("/register", RegisterRouter)
@@ -16,5 +17,6 @@ router.use("/cart", CartRouter)
 router.use("/user", UserRouter)
 router.use("/handler", HandlerRouter)
 router.use("/checkout", CheckoutRouter)
+router.use("/search", SearchRouter)
 
 module.exports = router;
