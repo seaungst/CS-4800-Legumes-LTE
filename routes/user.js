@@ -7,6 +7,7 @@ var CustomerAddress = require('../schemas/customer_address_schema');
 var Favorites = require('../schemas/favorites_schema');
 var PaymentInfo = require('../schemas/payment_info_schema');
 var Delivery = require('../schemas/delivery_schema');
+var Item = require('../schemas/items_schema');
 
 var router = express.Router();
 
@@ -24,7 +25,7 @@ router.get("/", function(req, res, err) {
 })
 
 // get account details
-router.get("/account-details", isAuth, getAddresses, getPaymentDetails, getFavorites, getDeliveries, packageData);
+router.get("/account-details", isAuth, getAddresses, getPaymentDetails, getFavoriteIDs, getFavorites, getDeliveries, packageData);
 
 function getAddresses(req, res, next){
     res.locals.ID = req.user.CustomerID;
@@ -43,10 +44,18 @@ function getPaymentDetails(req, res, next){
     })
 }
 
-function getFavorites(req, res, next){
+function getFavoriteIDs(req, res, next){
     Favorites.find({CustomerID: res.locals.ID}, function(err, result){
-        res.locals.favorites = result;
+        res.locals.favorite_ids = result;
         console.log(result);
+        next();
+    })
+}
+
+function getFavorites(req, res, next) {
+    Item.find({Item_ID: {$in: res.locals.favorite_ids}}, function(err, favorites) {
+        res.locals.favorites = favorites;
+        console.log(favorites);
         next();
     })
 }
