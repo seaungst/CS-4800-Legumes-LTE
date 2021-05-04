@@ -9,6 +9,7 @@ var UserRouter = require('./user')
 var HandlerRouter = require('./handler')
 var CheckoutRouter = require('./checkout')
 var SearchRouter = require('./itemSearch')
+var OrderDetailsRouter = require('./order_details')
 
 router.use("/stores", StoreRouter)
 router.use("/register", RegisterRouter)
@@ -18,5 +19,6 @@ router.use("/user", UserRouter)
 router.use("/handler", HandlerRouter)
 router.use("/checkout", CheckoutRouter)
 router.use("/search", SearchRouter)
+router.use("/order-details", OrderDetailsRouter)
 
 module.exports = router;
