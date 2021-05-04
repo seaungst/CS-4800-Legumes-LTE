@@ -31,7 +31,6 @@ function getAddresses(req, res, next){
     res.locals.ID = req.user.CustomerID;
     CustomerAddress.find({CustomerID: res.locals.ID}, function(err, result){
         res.locals.addresses = result;
-        console.log(result);
         next();
     })
 }
@@ -39,15 +38,13 @@ function getAddresses(req, res, next){
 function getPaymentDetails(req, res, next){
     PaymentInfo.find({CustomerID: res.locals.ID}, function(err, result){
         res.locals.payments = result;
-        console.log(result);
         next();
     })
 }
 
 function getFavoriteIDs(req, res, next){
-    Favorites.find({CustomerID: res.locals.ID}, function(err, result){
-        res.locals.favorite_ids = result;
-        console.log(result);
+    Favorites.findOne({CustomerID: res.locals.ID}, function(err, result){
+        res.locals.favorite_ids = result.Favorite_Items;
         next();
     })
 }
@@ -55,7 +52,6 @@ function getFavoriteIDs(req, res, next){
 function getFavorites(req, res, next) {
     Item.find({Item_ID: {$in: res.locals.favorite_ids}}, function(err, favorites) {
         res.locals.favorites = favorites;
-        console.log(favorites);
         next();
     })
 }
@@ -63,7 +59,6 @@ function getFavorites(req, res, next) {
 function getDeliveries(req, res, next){
     Delivery.find({CustomerID: res.locals.ID}, function(err, result){
         res.locals.deliveries = result;
-        console.log(result);
         next();
     })
 }
