@@ -1,57 +1,93 @@
 // routes responsible for dealing with customer search
-var express = require('express');
+var express = require("express");
 var router = express.Router();
 
 // requiring the necessary schemas
-var Item = require('../schemas/items_schema');
+var Item = require("../schemas/items_schema");
 
 //db.Items.createIndex({ Item_Name: 1, Category: 1, Subcategory: 1, Special: 1 })
 
 //Get the user search
 var entry;
 
-router.get('/', returnPage);
+router.get("/", returnPage);
 
-function returnPage(req, res){
-    res.sendFile("/views/search.html", { root: './'});
+function returnPage(req, res) {
+  res.sendFile("/views/search.html", { root: "./" });
 }
 
-router.post('/query', getSearchEntry, getSearchResults);
+router.post("/query", getSearchEntry, getSearchResultsCategory, getSearchResultName, getSearchResultSub, getSearchResultSpecial)
 
-function getSearchEntry(req, res, next){
-    entry = req.body.searchInput;
-    console.log(entry);
-    next();
+function getSearchEntry(req, res, next) {
+  entry = req.body.searchInput;
+  console.log(entry);
+  next();
 }
 
-function getSearchResults(req, res){
-    Item.find({
-        $text: {
-            $search: entry
-        }
-    } , {
-        Category: 1,
-        Subcategory: 1,
-        Special: 1,
-        Item_Name: 1
-    }, function (err, data) {
-        res.send(data);
+function getSearchResultsCategory(req, res, next) {
+  Item.find({Category : entry})
+    .then(data => {
+      res.json({
+        confirmation: "success",
+        data: data
+      });
     })
+    .catch(err => {
+      res.json({
+        confirmation: "fail",
+        message: err.message
+      });
+    });
+  next();
+}
+function getSearchResultName(req, res, next) { 
+  Item.find({Item_Name : entry})
+    .then(data => {
+      res.json({
+        confirmation: "success",
+        data: data
+      });
+    })
+    .catch(err => {
+      res.json({
+        confirmation: "fail",
+        message: err.message
+      });
+    });
+  next();
+}
 
-    /*
-    Item.find({
-        Item_Name: {
-            $regex: new RegExp(entry)
-        }
-    } , {
-        Category: 1,
-        Subcategory: 1,
-        Special: 1,
-        Item_Name: 1
-    }, function (err, data) {
-        res.send(data);
-    }).limit(15);
-    */
+function getSearchResultSub(req, res, next) {  
+  Item.find({Subcategory : entry})
+    .then(data => {
+      res.json({
+        confirmation: "success",
+        data: data
+      });
+    })
+    .catch(err => {
+      res.json({
+        confirmation: "fail",
+        message: err.message
+      });
+    });
+  next();
+}
+
+function getSearchResultSpecial(req, res) {  
+  Item.find({Special : entry})
+    .then(data => {
+      res.json({
+        confirmation: "success",
+        data: data
+      });
+    })
+    .catch(err => {
+      res.json({
+        confirmation: "fail",
+        message: err.message
+      });
+    });
 }
 
 module.exports = router;
