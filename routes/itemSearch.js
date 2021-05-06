@@ -25,7 +25,8 @@ function getSearchEntry(req, res, next) {
 }
 
 function getSearchResultsCategory(req, res, next) {
-  Item.find({Category : entry})
+  Item.find(
+    { $or: [{Category : entry}, {Item_Name: entry}, {Subcategory: entry}, {Special: entry}] })
     .then(data => {
       res.json({
         confirmation: "success",
@@ -38,7 +39,7 @@ function getSearchResultsCategory(req, res, next) {
         message: err.message
       });
     });
-  next();
+  //next();
 }
 function getSearchResultName(req, res, next) { 
   Item.find({Item_Name : entry})
