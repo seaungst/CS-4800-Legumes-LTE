@@ -6,6 +6,7 @@ it('Gets the /stores endpoint', async done => {
     // Sends GET request to /stores endpoint
     const response = await request.get('/stores')
 
+    expect(response.text).toBeTruthy()
     expect(response.status).toBe(200)
     done()
 })
