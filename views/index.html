@@ -165,6 +165,66 @@
           </ul>
         </li>
       </ul>
+      <h2>/checkout</h2>
+      <ul>
+        <li>
+          /checkout (POST request)
+          <ul>
+            <li><b>requires authentication in our server to access</b></li>
+            <li>
+              expects several items in the request body:
+              <ul>
+                <li>shipping and billing address information</li>
+                <li>the customer's ID</li>
+                <li>the ID of the handler fulfilling the delivery</li>
+                <li>any delivery instructions specified by the customer</li>
+              </ul>
+            </li>
+            <li>creates a new Delivery document based on the provided information</li>
+          </ul>
+        </li>
+      </ul>
+      <h2>/handler</h2>
+      <ul>
+        <li>
+          /handler (GET request)
+          <ul>
+            <li>does not require authentication in our server</li>
+            <li>returns an array of all the handlers registered with Chickpea</li>
+          </ul>
+        </li>
+      </ul>
+      <h2>/order-details</h2>
+      <ul>
+        <li>
+          /order-details (POST request)
+          <ul>
+            <li><b>requires authentication in our server to access</b></li>
+            <li>expects a Delivery ID in the request body</li>
+            <li>gathers and returns detailed information associated 
+              with the delivery that has the specified Delivery ID</li>
+          </ul>
+        </li>
+      </ul>
+      <h2>/search</h2>
+      <ul>
+        <li>
+          /search/query (POST request)
+          <ul>
+            <li>does not require authentication in our server</li>
+            <li>expects a search query in the request body</li>
+            <li>
+              returns an array of items if the search query exactly matches any of these:
+              <ul>
+                <li>Category</li>
+                <li>Item Name</li>
+                <li>Subcategory</li>
+                <li>Special (e.g. items marked as "Vegan")</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
     </div>
   </div>
 </body>

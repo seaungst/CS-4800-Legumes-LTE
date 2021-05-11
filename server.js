@@ -23,7 +23,7 @@ const DB_STRING = "mongodb+srv://" + process.env.db_user + ":" + process.env.db_
 
 // allow cross origin referencing
 app.use(cors({
-  origin: ['http://localhost:3000', 'https://localhost:3000', 'https://chickpea.glitch.me'],
+  origin: ['http://localhost:3000', 'https://localhost:3000', 'https://chickpea.glitch.me', 'http://chickpea.glitch.me'],
   methods: ['POST', 'PUT', 'GET', 'OPTIONS', 'HEAD'],
   credentials: true,
   allowedHeaders: ['Content-Type', 'Authorization']
