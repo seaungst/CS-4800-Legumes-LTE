@@ -44,16 +44,26 @@ function getPaymentDetails(req, res, next){
 
 function getFavoriteIDs(req, res, next){
     Favorites.findOne({CustomerID: res.locals.ID}, function(err, result){
-        res.locals.favorite_ids = result.Favorite_Items;
+      if(err){
+        console.log(err);
+      }
+        if(result){
+          res.locals.favorite_ids = result.Favorite_Items; 
+        }
         next();
     })
 }
 
 function getFavorites(req, res, next) {
-    Item.find({Item_ID: {$in: res.locals.favorite_ids}}, function(err, favorites) {
+    if(res.locals.favorite_ids){
+      Item.find({Item_ID: {$in: res.locals.favorite_ids}}, function(err, favorites) {
         res.locals.favorites = favorites;
         next();
-    })
+      }) 
+    }
+    else {
+        next();
+    }
 }
 
 function getDeliveries(req, res, next){
