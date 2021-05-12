@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1620797325331" clover="3.2.0">
-  <project timestamp="1620797325331" name="All files">
+<coverage generated="1620797369121" clover="3.2.0">
+  <project timestamp="1620797369121" name="All files">
     <metrics statements="362" coveredstatements="165" conditionals="36" coveredconditionals="2" methods="81" coveredmethods="6" elements="479" coveredelements="173" complexity="0" loc="362" ncloc="362" packages="4" files="21" classes="21"/>
     <package name="CS-4800-Legumes-LTE">
       <metrics statements="23" coveredstatements="22" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
