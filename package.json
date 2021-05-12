@@ -11,8 +11,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "test": "jest",
-    "test:watch": "jest --watch --coverage"
+    "test": "jest --coverage --detectOpenHandles",
+    "test:watch": "jest --watchAll --coverage"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",

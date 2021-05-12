@@ -11,7 +11,7 @@ var Item = require('../schemas/items_schema');
 /* defining the routes here */
 
 // query to retrieve all stores
-router.get('/', /*isAuth,*/ getStores, renderStores);
+router.get('/', /*isAuth,*/ getStores);
 
 function getStores(req, res, next){
     Store.find({}, function (err, stores) {
@@ -19,10 +19,6 @@ function getStores(req, res, next){
         //res.locals.store = stores;
         //next();
     });
-};
-
-function renderStores(req, res){
-    res.render("stores.ejs");
 };
 
 /* /detail route
@@ -57,10 +53,6 @@ function getStoreDetails(req, res, next){
       res.locals.store = store_details;
       res.send(res.locals);
   });
-}
-
-function renderStoreView(req, res){
-    res.render("junk.ejs");
 }
 
 module.exports = router;
