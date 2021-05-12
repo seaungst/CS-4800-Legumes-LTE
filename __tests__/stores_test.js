@@ -47,9 +47,12 @@ it('invalid input for /stores/detail endpoint', async done => {
         store_id: 11
     })
 
-    console.log(response.body);
-
+    // check that store is null since it was not found
+    expect(response.body.store).toBe(null);
+    // check that items is empty since no store was found
+    var empty = Object.keys(response.body.items).length == 0;
+    expect(empty).toBe(true);
     // check for success
-    expect(response.status).toBe(200)
+    expect(response.status).toBe(200);
     done()
 })
