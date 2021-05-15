@@ -11,13 +11,6 @@ var router = express.Router();
 var Customer = require('../schemas/customer_schema');
 
 /* defining the routes here */
-// serve dummy page for submitting user information
-router.get('/', returnPage);
-
-function returnPage(req, res){
-    res.sendFile("/views/signup.html", { root: './'});
-}
-
 router.post('/sign-up', checkUserExists, hashPassword, registerUser);
 
 function checkUserExists(req, res, next){
@@ -54,7 +47,7 @@ function registerUser(req, res){
         }
         var new_customer = new Customer(userData);
         new_customer.save(function(err, customer){
-            if (err) return console.error(err);
+            //if (err) return console.error(err);
             console.log(customer.Username + " saved to the collection.\n");
             res.send("successfully registered your account");
         });
