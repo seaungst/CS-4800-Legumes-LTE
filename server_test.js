@@ -12,22 +12,11 @@ const passport = require('passport');
 var routes = require('./routes');
 const app = express();
 
-// trust first proxy for glitch?
-app.set('trust proxy', 1);
-
 // gives access to the variables in .env
 require('dotenv').config()
 
 // db string const
 const DB_STRING = "mongodb+srv://" + process.env.db_user + ":" + process.env.db_pw + "@chickpeacluster.ol3yz.mongodb.net/Chickpea?retryWrites=true&w=majority";
-
-// allow cross origin referencing
-/*app.use(cors({
-  origin: ['http://localhost:3000', 'https://localhost:3000', 'https://chickpea.glitch.me', 'http://chickpea.glitch.me'],
-  methods: ['POST', 'PUT', 'GET', 'OPTIONS', 'HEAD'],
-  credentials: true,
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));*/
 
 // set app to use ejs (will remove after react integration is complete)
 app.set('view engine', 'ejs');
@@ -40,11 +29,6 @@ app.use(session({
   store: MongoStore.create({mongoUrl: DB_STRING}),
   cookie: {
     maxAge: 1000 * 60 * 10, // cookie will live for like 10 minutes for now
-    // comment out these three options when solely testing the middleware/backend (i.e. not doing cross-site work)
-    
-    sameSite: 'none',
-    secure: true,
-    httpOnly: false,
   }
 }));
 
