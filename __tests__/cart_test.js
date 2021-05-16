@@ -20,7 +20,12 @@ await authenticatedUser
     });
 });
 
+afterAll(async function(done){
+    await authenticatedUser.get('/login/logout');
+    done();
+})
 
+// getting cart info
 it("should return cart info", async done => {
     const response = await authenticatedUser.get('/cart');
     // expect the cart to have the dummy items
@@ -28,3 +33,45 @@ it("should return cart info", async done => {
     expect(response.status).toBe(200);
     done();
 });
+
+// add to cart test
+it("should add new item to cart", async done => {
+    const response = await authenticatedUser.post('/cart/add')
+        .send({
+            Item_ID: 1,
+            Quantity: 1
+        });
+    
+    expect(response.status).toBe(200);
+    // check that endpoint returns item that was added
+    expect(response.body.Item_ID).toBe(1);
+    done();
+})
+
+// add to quantity of existing cart item
+it("should add to the quantity of an existing cart item", async done => {
+    const response = await authenticatedUser.post('/cart/add')
+        .send({
+            Item_ID: 1,
+            Quantity: 2
+        });
+    
+    expect(response.status).toBe(200);
+    // check that endpoint returns item that was added
+    expect(response.body.Item_ID).toBe(1);
+    // check that the correct quantity was added
+    expect(response.body.Quantity).toBe(2);
+    done();
+})
+
+// remove from cart test
+it("should remove existing item from cart", async done => {
+    const response = await authenticatedUser.post('/cart/remove')
+        .send({
+            Item_ID: 1
+        });
+    expect(response.status).toBe(200);
+    // check for success message
+    expect(response.text).toBe("removed item");
+    done();
+})

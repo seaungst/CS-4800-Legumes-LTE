@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1621201387670" clover="3.2.0">
-  <project timestamp="1621201387670" name="All files">
-    <metrics statements="340" coveredstatements="220" conditionals="34" coveredconditionals="11" methods="68" coveredmethods="32" elements="442" coveredelements="263" complexity="0" loc="340" ncloc="340" packages="4" files="21" classes="21"/>
+<coverage generated="1621202886525" clover="3.2.0">
+  <project timestamp="1621202886525" name="All files">
+    <metrics statements="340" coveredstatements="238" conditionals="34" coveredconditionals="17" methods="68" coveredmethods="34" elements="442" coveredelements="289" complexity="0" loc="340" ncloc="340" packages="4" files="21" classes="21"/>
     <package name="CS-4800-Legumes-LTE">
       <metrics statements="22" coveredstatements="21" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="server_test.js" path="C:\Users\Ryan\source\repos\CS-4800-Legumes-LTE\server_test.js">
@@ -51,24 +51,24 @@
         <line num="33" count="6" type="stmt"/>
         <line num="34" count="2" type="stmt"/>
         <line num="37" count="6" type="stmt"/>
-        <line num="38" count="4" type="stmt"/>
-        <line num="40" count="4" type="stmt"/>
+        <line num="38" count="8" type="stmt"/>
+        <line num="40" count="8" type="stmt"/>
         <line num="42" count="0" type="stmt"/>
         <line num="45" count="6" type="stmt"/>
         <line num="47" count="6" type="stmt"/>
       </file>
     </package>
     <package name="CS-4800-Legumes-LTE.routes">
-      <metrics statements="272" coveredstatements="156" conditionals="30" coveredconditionals="8" methods="59" coveredmethods="26"/>
+      <metrics statements="272" coveredstatements="174" conditionals="30" coveredconditionals="14" methods="59" coveredmethods="28"/>
       <file name="auth_middleware.js" path="C:\Users\Ryan\source\repos\CS-4800-Legumes-LTE\routes\auth_middleware.js">
         <metrics statements="4" coveredstatements="3" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="2" count="6" type="stmt"/>
-        <line num="3" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="4" count="1" type="stmt"/>
+        <line num="3" count="4" type="cond" truecount="1" falsecount="1"/>
+        <line num="4" count="4" type="stmt"/>
         <line num="7" count="0" type="stmt"/>
       </file>
       <file name="cart.js" path="C:\Users\Ryan\source\repos\CS-4800-Legumes-LTE\routes\cart.js">
-        <metrics statements="49" coveredstatements="31" conditionals="10" coveredconditionals="3" methods="6" coveredmethods="4"/>
+        <metrics statements="49" coveredstatements="49" conditionals="10" coveredconditionals="9" methods="6" coveredmethods="6"/>
         <line num="1" count="6" type="stmt"/>
         <line num="3" count="6" type="stmt"/>
         <line num="6" count="6" type="stmt"/>
@@ -98,25 +98,25 @@
         <line num="54" count="2" type="stmt"/>
         <line num="56" count="1" type="stmt"/>
         <line num="61" count="6" type="stmt"/>
-        <line num="65" count="0" type="stmt"/>
-        <line num="66" count="0" type="stmt"/>
-        <line num="67" count="0" type="stmt"/>
-        <line num="68" count="0" type="stmt"/>
-        <line num="71" count="0" type="stmt"/>
-        <line num="72" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="73" count="0" type="stmt"/>
-        <line num="74" count="0" type="stmt"/>
-        <line num="79" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="80" count="0" type="stmt"/>
-        <line num="82" count="0" type="stmt"/>
+        <line num="65" count="2" type="stmt"/>
+        <line num="66" count="2" type="stmt"/>
+        <line num="67" count="2" type="stmt"/>
+        <line num="68" count="2" type="stmt"/>
+        <line num="71" count="2" type="stmt"/>
+        <line num="72" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="73" count="1" type="stmt"/>
+        <line num="74" count="1" type="stmt"/>
+        <line num="79" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="80" count="1" type="stmt"/>
+        <line num="82" count="2" type="stmt"/>
         <line num="86" count="6" type="stmt"/>
-        <line num="90" count="0" type="stmt"/>
-        <line num="93" count="0" type="stmt"/>
-        <line num="94" count="0" type="stmt"/>
-        <line num="95" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="96" count="0" type="stmt"/>
-        <line num="97" count="0" type="stmt"/>
-        <line num="98" count="0" type="stmt"/>
+        <line num="90" count="1" type="stmt"/>
+        <line num="93" count="1" type="stmt"/>
+        <line num="94" count="1" type="stmt"/>
+        <line num="95" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="96" count="2" type="stmt"/>
+        <line num="97" count="1" type="stmt"/>
+        <line num="98" count="1" type="stmt"/>
         <line num="101" count="6" type="stmt"/>
       </file>
       <file name="checkout.js" path="C:\Users\Ryan\source\repos\CS-4800-Legumes-LTE\routes\checkout.js">
@@ -236,8 +236,8 @@
         <line num="19" count="6" type="stmt"/>
         <line num="20" count="1" type="stmt"/>
         <line num="23" count="6" type="stmt"/>
-        <line num="24" count="1" type="stmt"/>
-        <line num="25" count="1" type="stmt"/>
+        <line num="24" count="2" type="stmt"/>
+        <line num="25" count="2" type="stmt"/>
         <line num="27" count="6" type="stmt"/>
       </file>
       <file name="order_details.js" path="C:\Users\Ryan\source\repos\CS-4800-Legumes-LTE\routes\order_details.js">

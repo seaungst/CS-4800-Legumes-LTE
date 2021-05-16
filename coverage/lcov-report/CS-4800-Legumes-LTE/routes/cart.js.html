@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">63.27% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>31/49</span>
+                <span class='fraction'>49/49</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">30% </span>
+                <span class="strong">90% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>3/10</span>
+                <span class='fraction'>9/10</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">66.67% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>4/6</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">63.27% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>31/49</span>
+                <span class='fraction'>49/49</span>
             </div>
         
             
@@ -55,7 +55,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -221,24 +221,24 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -246,15 +246,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">6x</span></td><td class="text"><pre class="prettyprint lang-js">const isAuth = require('./auth_middleware').isAuth;
@@ -319,42 +319,42 @@ function getStoreNames(req, res){
 // add to cart based on Item_ID in request body
 router.post("/add", isAuth, addToCart);
 &nbsp;
-function <span class="fstat-no" title="function not covered" >addToCart(</span>req, res, next){
+function addToCart(req, res, next){
     // grabbing the data from the request body
-    var item = <span class="cstat-no" title="statement not covered" >{};</span>
-    var added = <span class="cstat-no" title="statement not covered" >false;</span>
-<span class="cstat-no" title="statement not covered" >    item.Item_ID = req.body.Item_ID;</span>
-<span class="cstat-no" title="statement not covered" >    item.Quantity = req.body.Quantity;</span>
+    var item = {};
+    var added = false;
+    item.Item_ID = req.body.Item_ID;
+    item.Quantity = req.body.Quantity;
 &nbsp;
     // if item is already in cart, add to the existing quantity
-<span class="cstat-no" title="statement not covered" >    for(var cart_item of req.session.cart){</span>
-<span class="cstat-no" title="statement not covered" >        if(item.Item_ID == cart_item.Item_ID){</span>
-<span class="cstat-no" title="statement not covered" >            cart_item.Quantity += item.Quantity;</span>
-<span class="cstat-no" title="statement not covered" >            added = true;</span>
+    for(var cart_item of req.session.cart){
+        if(item.Item_ID == cart_item.Item_ID){
+            cart_item.Quantity += item.Quantity;
+            added = true;
         }
     }
 &nbsp;
     // if item wasn't added (doesn't exist in cart), add it
-<span class="cstat-no" title="statement not covered" >    if(!added){</span>
-<span class="cstat-no" title="statement not covered" >        req.session.cart.push(item);</span>
+    if(!added){
+        req.session.cart.push(item);
     }
-<span class="cstat-no" title="statement not covered" >    res.send(item);</span>
+    res.send(item);
 }
 &nbsp;
 // remove from cart based on Item_ID in request body
 router.post("/remove", isAuth, removeFromCart);
 &nbsp;
-function <span class="fstat-no" title="function not covered" >removeFromCart(</span>req, res) {
+function removeFromCart(req, res) {
     // grab Item_ID from request body
-    var Item_ID = <span class="cstat-no" title="statement not covered" >req.body.Item_ID;</span>
+    var Item_ID = req.body.Item_ID;
 &nbsp;
     // create new cart without item with Item_ID, assign to session cart
-    var new_cart = <span class="cstat-no" title="statement not covered" >[];</span>
-<span class="cstat-no" title="statement not covered" >    for(var cart_item of req.session.cart)</span>
-<span class="cstat-no" title="statement not covered" >        if(cart_item.Item_ID != Item_ID)</span>
-<span class="cstat-no" title="statement not covered" >            new_cart.push(cart_item)</span>
-<span class="cstat-no" title="statement not covered" >    req.session.cart = new_cart;</span>
-<span class="cstat-no" title="statement not covered" >    res.send("removed item");</span>
+    var new_cart = [];
+    for(var cart_item of req.session.cart)
+        if(cart_item.Item_ID != Item_ID)
+            new_cart.push(cart_item)
+    req.session.cart = new_cart;
+    res.send("removed item");
 }
 &nbsp;
 module.exports = router;</pre></td></tr></table></pre>
@@ -364,7 +364,7 @@ module.exports = router;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Sun May 16 2021 14:43:07 GMT-0700 (Pacific Daylight Time)
+                at Sun May 16 2021 15:08:06 GMT-0700 (Pacific Daylight Time)
             </div>
         </div>
         <script src="../../prettify.js"></script>
