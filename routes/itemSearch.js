@@ -10,13 +10,7 @@ var Item = require("../schemas/items_schema");
 //Get the user search
 var entry;
 
-router.get("/", returnPage);
-
-function returnPage(req, res) {
-  res.sendFile("/views/search.html", { root: "./" });
-}
-
-router.post("/query", getSearchEntry, getSearchResultsCategory, getSearchResultName, getSearchResultSub, getSearchResultSpecial)
+router.post("/query", getSearchEntry, getSearchResultsCategory)
 
 function getSearchEntry(req, res, next) {
   entry = req.body.searchInput;
@@ -27,56 +21,6 @@ function getSearchEntry(req, res, next) {
 function getSearchResultsCategory(req, res, next) {
   Item.find(
     { $or: [{Category : entry}, {Item_Name: entry}, {Subcategory: entry}, {Special: entry}] })
-    .then(data => {
-      res.json({
-        confirmation: "success",
-        data: data
-      });
-    })
-    .catch(err => {
-      res.json({
-        confirmation: "fail",
-        message: err.message
-      });
-    });
-  //next();
-}
-function getSearchResultName(req, res, next) { 
-  Item.find({Item_Name : entry})
-    .then(data => {
-      res.json({
-        confirmation: "success",
-        data: data
-      });
-    })
-    .catch(err => {
-      res.json({
-        confirmation: "fail",
-        message: err.message
-      });
-    });
-  next();
-}
-
-function getSearchResultSub(req, res, next) {  
-  Item.find({Subcategory : entry})
-    .then(data => {
-      res.json({
-        confirmation: "success",
-        data: data
-      });
-    })
-    .catch(err => {
-      res.json({
-        confirmation: "fail",
-        message: err.message
-      });
-    });
-  next();
-}
-
-function getSearchResultSpecial(req, res) {  
-  Item.find({Special : entry})
     .then(data => {
       res.json({
         confirmation: "success",
