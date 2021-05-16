@@ -51,10 +51,5 @@ app.use(express.static("public"));
 // connecting to the chickpea database
 mongoose.connect(DB_STRING, { useNewUrlParser: true });
 
-// sending the landing page to the client
-app.get("/", (request, response) => {
-  response.sendFile(__dirname + "/views/index.html");
-});
-
 // export app for testing
 module.exports = app;

@@ -9,6 +9,8 @@ const userCredentials = {
 
 //now let's login the user before we run any tests
 var authenticatedUser = request.agent(app);
+var unauthUser = request.agent(app);
+
 beforeAll(async function(done){
 await authenticatedUser
     .post('/login/attempt')
@@ -31,6 +33,12 @@ it("should return cart info", async done => {
     // expect the cart to have the dummy items
     expect(response.body.length).toBe(2);
     expect(response.status).toBe(200);
+    done();
+});
+
+it("should return 401 status", async done => {
+    const response = await unauthUser.get('/cart');
+    expect(response.status).toBe(401);
     done();
 });
 
