@@ -57,11 +57,6 @@ function getStoreNames(req, res){
     });
 }
 
-// add to cart page, for testing
-router.get("/AddTo", function(req, res, next){
-    res.sendFile("/views/addtocart_test.html", { root: './'});
-})
-
 // add to cart based on Item_ID in request body
 router.post("/add", isAuth, addToCart);
 
