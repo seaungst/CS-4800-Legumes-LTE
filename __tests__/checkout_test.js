@@ -4,7 +4,6 @@ var Delivery = require('../schemas/delivery_schema');
 var Item = require('../schemas/items_schema');  // IDs in dummy cart: 4, 25
 
 var ID4_STOCK_BEFORE;
-var ID25_STOCK_BEFORE
 
 //let's set up the data we need to pass to the login method
 const userCredentials = {
