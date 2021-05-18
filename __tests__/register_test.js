@@ -9,7 +9,7 @@ async done => {
     const response = await request.post('/register/sign-up')
     .send(
         {
-            username: "UnitTest",
+            username: "UnitTest1",
             password: "apassword",
             name: "Unit Test",
             email: "unit@test"
@@ -17,10 +17,10 @@ async done => {
     );
 
     // check that user exists in the database
-    var user = await Customer.findOne({Username: "UnitTest"});
-    expect(user.Username).toBe("UnitTest");
+    var user = await Customer.findOne({Username: "UnitTest1"});
+    expect(user.Username).toBe("UnitTest1");
     // delete user that was just created
-    await Customer.deleteOne({Username: "UnitTest"});
+    await Customer.deleteOne({Username: "UnitTest1"});
     // expect request body to be "successfully registered your account"
     expect(response.text).toBe("successfully registered your account");
     // check for success
