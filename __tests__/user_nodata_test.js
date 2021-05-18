@@ -26,16 +26,6 @@ afterAll(async function(done){
     done();
 })
 
-// test for authenticated user
-it('gets the /user endpoint', async done => {
-    const response = await authenticatedUser.get('/user');
-    expect(response.status).toBe(200);
-    // check that it sends the correct data over
-    expect(response.body.Username).toBe("Test4");
-    expect(response.body.loggedIn).toBe(true);
-    done();
-})
-
 // account details tests
 //test for user we don't have information for
 it('gets the /user/account-details endpoint for a user with no data', async done => {
